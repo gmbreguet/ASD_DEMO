@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Fichier        : 05_supression.cpp
+// Fichier        : 00_supression.cpp
 // Auteur(s)      : BREGUET Guy-Michel
 // Date           : 2021-12-05
 // But            : comparer des algorithmes de supression
