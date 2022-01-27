@@ -1,14 +1,9 @@
 //---------------------------------------------------------
-// Fichier        : 02_Factorielle.cpp
+// Fichier        : 02_Fibonacci.cpp
 // Version        : 01 - 2022-01-27
 // Auteur(s)      : BREGUET Guy-Michel
-// But            : démontrer l'algorithme du calcul factoriel
+// But            : démontrer l'algorithme de Fibonacci
 //                : en mode récursif
-// Complexité     : f(0)   => 0 appel
-//                  f(1)   => 1 appel
-//                  f(2)   => 2 appels
-//                  f(n)   => n appels
-//                  => O(n) 
 // Modifications  :
 // Remarque(s)    : NILL
 //---------------------------------------------------------
@@ -19,18 +14,18 @@
 using namespace std;
 
 //------------------------------------------------------
-unsigned facto(unsigned n) {
+unsigned Fibo(unsigned n) {
 
    // nbre d'appels
    static unsigned appels = 0;
    cout << ++appels << ") " << " n=" << n << endl;
 
    // cas trivial
-   if (n == 0)
+   if (n <= 1)
       return 1;
 
    // appel récursif
-   return n * facto(n-1);
+   return Fibo(n-1) + Fibo(n-2);
 }
 
 //------------------------------------------------------
@@ -38,12 +33,11 @@ unsigned facto(unsigned n) {
 //------------------------------------------------------
 int main () {
 
-   cout << "Factorielle récursif" << endl;
+   cout << "Fibonacci" << endl;
 
-   unsigned factorielle = facto(6);
+   unsigned fibo = Fibo(9);
    cout << endl;
-
-   cout << "facto(6) = " << factorielle << endl;
+   cout << "Fibo(9) = " << fibo << endl;
 
    return EXIT_SUCCESS;
 }

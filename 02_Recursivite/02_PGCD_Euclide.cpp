@@ -4,11 +4,6 @@
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'algorithme du calcul PGCD
 //                : en mode récursif
-// Complexité     : f(0)   => 0 appel
-//                  f(1)   => 1 appel
-//                  f(2)   => 2 appels
-//                  f(n)   => n appels
-//                  => O(n) 
 // Modifications  :
 // Remarque(s)    : NILL
 //---------------------------------------------------------
