@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Fichier        : 01_somme_n.cpp
+// Version        : 01 - 2021-12-05
 // Auteur(s)      : BREGUET Guy-Michel
-// Date           : 2021-12-05
 // But            : comparer les algorithmes de la somme des n premiers entier
 //                   - de manière itérative
 //                   - algo 

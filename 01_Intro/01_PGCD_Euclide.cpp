@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Fichier        : 01_somme_n.cpp
+// Fichier        : 01_PGCD_Euclide.cpp
+// Version        : 01 - 2021-12-05
 // Auteur(s)      : BREGUET Guy-Michel
-// Date           : 2021-12-05
 // But            : démontrer l'algorithme PGCD par Euclide
 // Modifications  :
 // Remarque(s)    : NILL
@@ -15,7 +15,7 @@ using namespace std;
 //------------------------------------------------------
 int PGDC(int a, int b) {
    int r;
-   while( r = a % b ) {
+   while((r = a % b)) {
       a = b;
       b = r;
    }
