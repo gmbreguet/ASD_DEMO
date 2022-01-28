@@ -71,7 +71,7 @@ int main () {
    Tour& centre = tours[1];
    Tour& droite = tours[2];
 
-   // tour à déplacer
+   // tours à déplacer
    gauche = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 
    //        from    via     to      height
