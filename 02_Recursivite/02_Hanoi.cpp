@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Fichier        : 01_Hanoi.cpp
+// Fichier        : 02_Hanoi.cpp
 // Version        : 01 - 2022-01-27
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'algorithme des tours de Hanoi
