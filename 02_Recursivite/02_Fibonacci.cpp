@@ -3,9 +3,11 @@
 // Version        : 01 - 2022-01-27
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'algorithme de Fibonacci
-//                : en mode récursif
+//                : en mode récursif en itératif
 // Modifications  :
-// Remarque(s)    : NILL
+// Remarque(s)    : n: 0 1 2 3 4 5  6  7
+//                  f: 0 1 2 3 5 8 13 21
+
 //---------------------------------------------------------
 
 #include <iostream>
@@ -13,19 +15,44 @@
 
 using namespace std;
 
-//------------------------------------------------------
-unsigned Fibo(unsigned n) {
+// pour compter les appels ou les boucles
+unsigned nbreAppelRec   = 0;
+unsigned nbreBoucleIter = 0;
 
-   // nbre d'appels
-   static unsigned appels = 0;
-   cout << ++appels << ") " << " n=" << n << endl;
+//------------------------------------------------------
+// récursif
+unsigned fibo_rec(unsigned n) {
+
+   ++nbreAppelRec;
+
+   // cas trivial
+   if (n <= 2)
+      return 1;
+
+   // appel récursif
+   return fibo_rec(n-2) + fibo_rec(n-1);
+}
+
+//------------------------------------------------------
+// itératif
+unsigned fibo_iter(unsigned n) {
 
    // cas trivial
    if (n <= 1)
       return 1;
 
-   // appel récursif
-   return Fibo(n-1) + Fibo(n-2);
+   unsigned fn2;
+   unsigned fn1 = 0;
+   unsigned fn  = 1;
+
+   for (size_t i=2; i<=n; ++i) {
+      fn2 = fn1;
+      fn1 = fn;
+      fn  = fn2 + fn1;
+      ++nbreBoucleIter;
+   } 
+
+   return fn;
 }
 
 //------------------------------------------------------
@@ -33,11 +60,15 @@ unsigned Fibo(unsigned n) {
 //------------------------------------------------------
 int main () {
 
-   cout << "Fibonacci" << endl;
-
-   unsigned fibo = Fibo(9);
+   cout << "Fibonacci recursif" << endl;
+   cout << "fibo_rec(6)    : "  << fibo_rec(6)    << endl;
+   cout << "nbre appels    : "  << nbreAppelRec   << endl;
    cout << endl;
-   cout << "Fibo(9) = " << fibo << endl;
+
+   cout << "Fibonacci itératif" << endl;
+   cout << "fibo_iter(6)   : "  << fibo_iter(6)   << endl;
+   cout << "nbre boucles   : "  << nbreBoucleIter << endl;
+   cout << endl;
 
    return EXIT_SUCCESS;
 }

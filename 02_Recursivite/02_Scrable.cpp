@@ -70,7 +70,6 @@ void permuter3(string S, size_t n) {
       cout << ++nbreAppels << ") " << S << endl;
    }
    else {
-
       permuter3(S, n-1);
 
       for (size_t i=1; i<n; ++i) {
