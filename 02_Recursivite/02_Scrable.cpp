@@ -1,8 +1,8 @@
 //---------------------------------------------------------
 // Fichier        : 02_Scrable.cpp
-// Version        : 01 - 2022-01-29
+// Version        : 01 - 2022-01-30
 // Auteur(s)      : BREGUET Guy-Michel
-// But            : démontrer l'algorithme recursif générant
+// But            : démontrer les algorithmes recursifs générant
 //                : toutes les combinaisons d'une série de lettres
 // Modifications  :
 // Remarque(s)    : dans les algorithmes, la valeur 1 correspond à S[0]]
@@ -17,7 +17,8 @@
 using namespace std;
 
 //------------------------------------------------------
-// approache naive     /-- par valeur
+// approache naive
+// NB : la chaine est reçue par valeur
 void permuter1(string S, size_t n) {
 
    // afficher les aappels et les résultats intermédiaires
@@ -37,6 +38,7 @@ void permuter1(string S, size_t n) {
 
 //------------------------------------------------------
 // sans échange inutile
+// NB : la chaine est reçue par valeur
 void permuter2(string S, size_t n) {
 
    // afficher les aappels et les résultats intermédiaires
