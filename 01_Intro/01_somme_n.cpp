@@ -5,7 +5,7 @@
 // But            : comparer les algorithmes de la somme
 //                  des n premiers entier
 //                   - de manière itérative
-//                   - algo 
+//                   - formule (Euclide) 
 // Modifications  :
 // Remarque(s)    : NILL
 //---------------------------------------------------------
