@@ -8,6 +8,9 @@
 //                   - formule (Euclide) 
 // Modifications  :
 // Remarque(s)    : NILL
+// Application    : combien de couples (x,y)
+//                : tel que 1 <= x < y <= 20
+//                : => n(n+1)/2 => 19*20/2 => 190
 //---------------------------------------------------------
 
 #include <iostream>
