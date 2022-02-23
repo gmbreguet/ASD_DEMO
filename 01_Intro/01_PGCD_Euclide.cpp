@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Fichier        : 01_PGCD_Euclide.cpp
-// Version        : 01 - 2021-12-05
+// Version        : 02 - 2022-02-23
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'algorithme PGCD par Euclide
 // Modifications  :
@@ -48,3 +48,9 @@ int main () {
 
    return EXIT_SUCCESS;
 }  // main
+
+//       a   b   r
+//      17   7
+//       7   3   3
+//       3   1   1
+//       3   1   0
