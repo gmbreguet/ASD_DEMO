@@ -36,7 +36,7 @@ int main () {
       // 0.5 * (O(1) + O(log(N))
       // => O(log(N)
 
-   }  // N * O(log(N) => O (N * LOG(N))
+   }  // N * O(log(N) => O (N * log(N))
 
    return EXIT_SUCCESS;
 }  // main
