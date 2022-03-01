@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Demo           : 01_Pile_G
 // Fichier        : main.cpp
-// Version        : 01 - 2022.02.28
+// Version        : 02 - 2022.03.01
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : Pile générique avec exceptions
 // Modifications  :
@@ -20,7 +20,7 @@ int main() {
 
    cout << "-------------------------------" << endl;
    cout << "empiler 10 valeurs ..."          << endl;
-   Pile<int> pile(10);
+   Pile<int, 10> pile;     // une pile de 10 entiers
    int i=0;
    while (not pile.estPleine()) {
       cout << "empiler("<< i << ")"          << endl;
@@ -34,6 +34,7 @@ int main() {
       pile.depiler();
    }
 
+   // test des exceptions
    try {
       int top = pile.sommet();
       cout << "sommet : " << top << endl;

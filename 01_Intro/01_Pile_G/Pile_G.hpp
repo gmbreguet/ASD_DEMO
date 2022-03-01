@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Demo           : Pile_G
 // Fichier        : Pile_G.h
-// Version        : 01 - 2022.02.28
+// Version        : 02 - 2022.03.01
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : Pile générique avec exceptions
 // Modifications  :
@@ -19,21 +19,20 @@ class Pile_Vide{};
 class Pile_Pleine{};
 
 //---------------------------------------------------
-template <typename T>
+template <typename T, int capacite>
 class Pile {
 public:
-   Pile(size_t capacite);
+   Pile();
    void empiler(const T& valeur);               // => exception si pleine
    void depiler();                              // => exception si vide
-   T    sommet() const;                         // => exception si vide
+   T    sommet()    const;                      // => exception si vide
 
    bool estVide()   const;
    bool estPleine() const;
 
 private:
-   const size_t capacite; 
-         size_t taille;
-   std::vector<T> tab;
+   size_t taille;
+   T tab[capacite];
 };
 
 #include "Pile_G_impl.hpp"
