@@ -32,7 +32,7 @@ public:
 
 private:
    size_t taille;
-   T tab[capacite];
+   T tab[size_t(capacite)];
 };
 
 #include "Pile_G_impl.hpp"
