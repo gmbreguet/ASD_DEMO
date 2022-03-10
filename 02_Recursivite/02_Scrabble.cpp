@@ -43,7 +43,7 @@ void permuter4(string& S, size_t n);
 //------------------------------------------------------
 int main () {
 
-   cout << "Scrable récursif" << endl;
+   cout << "Scrabble récursif" << endl;
    cout << "----------------" << endl << endl;
 
    const string CHAINE = "ABC";
