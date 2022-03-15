@@ -22,7 +22,7 @@ unsigned sommeChiffre_iter(unsigned n);
 unsigned sommeChiffre_rec(unsigned n);
 
 //------------------------------------------------------
-// recursion terminale
+// recursion terminale (tail recursion)
 unsigned sommeChiffre_tailRec  (unsigned n);
 unsigned sommeChiffre_tailRec_R(unsigned n, unsigned somme);
 
@@ -58,7 +58,7 @@ unsigned sommeChiffre_rec(unsigned n) {
 }
 
 //------------------------------------------------------
-// recursion terminale
+// recursion terminale (tail recursion)
 unsigned sommeChiffre_tailRec(unsigned n) {
    if (n < 10)
       return n;
