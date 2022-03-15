@@ -62,7 +62,7 @@ unsigned sommeChiffre_rec(unsigned n) {
 unsigned sommeChiffre_tailRec(unsigned n) {
    if (n < 10)
       return n;
-   return sommeChiffre_tailRec_R(n, 0);   // tail recursion
+   return sommeChiffre_tailRec_R(n, 0);
 }
 
 //------------------------------------------------------
