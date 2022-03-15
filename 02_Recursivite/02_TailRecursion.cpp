@@ -2,7 +2,7 @@
 // Fichier        : 02_SommeChiffres.cpp
 // Version        : 01 - 2022-03-15
 // Auteur(s)      : BREGUET Guy-Michel
-// But            : somme des chiffres d'un nombres
+// But            : somme des chiffres d'un nombre
 //                : en mode itératif, récursif et récursion terminale
 // Modifications  :
 // Remarque(s)    :
