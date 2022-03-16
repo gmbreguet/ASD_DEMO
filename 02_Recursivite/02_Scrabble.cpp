@@ -5,8 +5,7 @@
 // But            : démontrer les algorithmes recursifs générant
 //                : toutes les combinaisons d'une série de lettres
 // Modifications  :
-// Remarque(s)    : dans les algorithmes, la valeur 1 correspond à S[0]]
-//                  raison pour laquelle il y a un epscae " ABC" 
+// Remarque(s)    :  
 //---------------------------------------------------------
 
 #include <iostream>
