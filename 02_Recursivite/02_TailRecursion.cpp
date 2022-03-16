@@ -72,3 +72,8 @@ unsigned sommeChiffres_tailRec_R(unsigned n, unsigned somme) {
       return somme;
    return sommeChiffres_tailRec_R(n / 10, somme + n % 10);
 }
+
+//      somme des chiffres : 4958
+//      iteratif       :  => 26
+//      recursif       :  => 26
+//      tail recursion :  => 26
