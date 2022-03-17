@@ -49,22 +49,22 @@ int main () {
    
    cout << "approche naive" << endl;
    string chaine1 = CHAINE;
-   permuter1(chaine1, 3);
+   permuter1(chaine1, chaine1.size());
 
    cout << endl;
    cout << "double échange" << endl;
    string chaine2 = CHAINE;
-   permuter2(chaine2, 3);
+   permuter2(chaine2, chaine2.size());
 
    cout << endl;
    cout << "sans échange inutile" << endl;
    string chaine3 = CHAINE;
-   permuter3(chaine3, 3);
+   permuter3(chaine3, chaine3.size());
 
    cout << endl;
    cout << "algorithme de Heap" << endl;
    string chaine4 = CHAINE;
-   permuter4(chaine4, 3);
+   permuter4(chaine4, chaine4.size());
 
    return EXIT_SUCCESS;
 }
