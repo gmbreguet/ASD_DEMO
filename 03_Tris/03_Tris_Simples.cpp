@@ -1,13 +1,13 @@
 //---------------------------------------------------------
-// Demo           : 03_Tris_Simples
 // Fichier        : 03_Tris_Simples.cpp
+// Version        : 01 - 2022-03-15
 // Auteur(s)      : BREGUET Guy-Michel
-// Date           : 2022-03-16
 // But            : démontrer les tris de base
 //                   - tri à bulles
 //                   - tri par insertions
 //                   - tri par sélection
-// Remarque(s)    : NILL
+// Modifications  :
+// Remarque(s)    :
 //---------------------------------------------------------
 
 #include <cstdlib>

@@ -1,10 +1,10 @@
 //---------------------------------------------------------
-// Demo           : 03_Pointeurs
 // Fichier        : 03_Pointeurs.cpp
+// Version        : 01 - 2022-03-15
 // Auteur(s)      : BREGUET Guy-Michel
-// Date           : 2022-03-16
 // But            : démontrer l'utilisation basic de pointeurs
-// Remarque(s)    : NILL
+// Modifications  :
+// Remarque(s)    :
 //---------------------------------------------------------
 
 #include <cstdlib>
