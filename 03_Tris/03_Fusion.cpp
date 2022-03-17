@@ -30,7 +30,7 @@ ostream& operator<< (ostream& os, const vector<T> v) {
 
 //---------------------------------------------------------
 template <typename T>
-vector<T> fusionner (const vector<T> lhs, const vector<T> rhs) {
+vector<T> fusionner (const vector<T>& lhs, const vector<T>& rhs) {
 
    // cas particuliers => gain de temps
    if (lhs.empty())
