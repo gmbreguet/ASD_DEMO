@@ -30,7 +30,7 @@ ostream& operator<< (ostream& os, const vector<T> v) {
 
 //---------------------------------------------------------
 template <typename T>
-vector<T> fusionner (const vector<T>& lhs, const vector<T>& rhs) {
+vector<T> fusionner1 (const vector<T>& lhs, const vector<T>& rhs) {
 
    // cas particuliers => gain de temps
    if (lhs.empty())
@@ -49,7 +49,7 @@ vector<T> fusionner (const vector<T>& lhs, const vector<T>& rhs) {
 
    // copie alternative
    while (lhs_it != lhs.end() and rhs_it != rhs.end())
-      *res_it++ = *lhs_it < *rhs_it ? *lhs_it++ : *rhs_it++;
+      *res_it++ = (*lhs_it < *rhs_it) ? *lhs_it++ : *rhs_it++;
 
    // copie la partie restante
    if (lhs_it == lhs.end())
@@ -61,6 +61,19 @@ vector<T> fusionner (const vector<T>& lhs, const vector<T>& rhs) {
    return resultat;
 }
 
+//---------------------------------------------------------
+// https://www.cplusplus.com/reference/algorithm/merge
+template <typename InputIterator1, typename InputIterator2, typename OutputIterator>
+OutputIterator fusionner2 (InputIterator1 first1, InputIterator1 last1,
+                           InputIterator2 first2, InputIterator2 last2,
+                           OutputIterator result) {
+  while (true) {
+    if (first1==last1) return std::copy(first2,last2,result);
+    if (first2==last2) return std::copy(first1,last1,result);
+    *result++ = (*first2 < *first1)? *first2++ : *first1++;
+  }
+}
+
 //------------------------------------------------------
 // main
 //------------------------------------------------------
@@ -68,15 +81,22 @@ int main () {
 
    const vector<int> A = {1, 3, 5, 7, 9};
    const vector<int> B = {2, 4, 6, 8};
+   vector<int> v (A.size() + B.size());
 
-   cout << "vecteur A       : " << A << endl;
-   cout << "vecteur B       : " << B << endl;
-   cout << "fusionner(A, B) : " << fusionner(A, B);
+   cout << "vecteur A         : " << A                << endl;
+   cout << "vecteur B         : " << B                << endl;
+   cout << "fusionner1(A, B)  : " << fusionner1(A, B) << endl;
+
+   fusionner2(A.begin(), A.end(),
+              B.begin(), B.end(),
+              v.begin());
+   cout << "fusionner2(...)   : " << v                << endl;
 
    cout << endl;
    return EXIT_SUCCESS;
 }
 
-//      vecteur A       : [1, 3, 5, 7, 9]
-//      vecteur B       : [2, 4, 6, 8]
-//      fusionner(A, B) : [1, 2, 3, 4, 5, 6, 7, 8, 9]
+//      vecteur A         : [1, 3, 5, 7, 9]
+//      vecteur B         : [2, 4, 6, 8]
+//      fusionner1(A, B)  : [1, 2, 3, 4, 5, 6, 7, 8, 9]
+//      fusionner2(...)   : [1, 2, 3, 4, 5, 6, 7, 8, 9]
