@@ -128,3 +128,22 @@ void tri_rapide_rec(T tableau[], int debut, int fin) {
       tri_rapide_rec(tableau, pivot+1, fin    );
    }
 }
+
+//       0  1  2  3  4  5  6  7  8
+//      [9, 4, 2, 6, 5, 7, 1, 3, 8]
+//      0 7 8
+//      0 0 6
+//      1 2 6
+//      3 3 6
+//      4 5 6
+//      [1, 2, 3, 4, 5, 6, 7, 8, 9]
+//
+//      TRIRAPIDE
+//      0 2 8
+//      0 0 1
+//      3 3 8
+//      4 4 8
+//      5 6 8
+//      7 7 8
+//      ADEIIPRRT
+//
