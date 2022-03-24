@@ -87,12 +87,16 @@ int partition (T tab[], int debut, int fin) {
    int j = p-1;
 
    while(true) {
+
+      // avancer i
       while (tab[i] < tab[p])
          ++i;
 
+      // reculer j
       while (debut <= j and tab[j] > tab[p])
          --j;
 
+      // indices rejoints ou croisés
       if (i >= j)
          break;
 
