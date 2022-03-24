@@ -45,11 +45,8 @@ int main() {
    }
 
    {  // tableau de caractères
-      // char chaine[] = "TRIRAPIDE";  // /!\ ajout '\0'
-      // int TAILLE = sizeof(chaine) / sizeof(char) - 1;
-
-      char chaine[] = {'T', 'R', 'I', 'R', 'A', 'P', 'I', 'D', 'E'};
-      int TAILLE = sizeof(chaine) / sizeof(char);
+      char chaine[] = "TRIRAPIDE";  // /!\ ajout '\0'
+      int TAILLE = sizeof(chaine) / sizeof(char) - 1;
 
       cout << endl;
 
