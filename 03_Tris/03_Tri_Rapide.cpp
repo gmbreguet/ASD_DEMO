@@ -15,12 +15,15 @@
 using namespace std;
 
 //---------------------------------------------------------
+void display_ind(int taille);
+
+//---------------------------------------------------------
 template <typename T>
 void display_tab(const T tab[], int taille);
 
 //---------------------------------------------------------
 template <typename T>
-int partition (T tableau[], int deb, int fin);
+int partition (T tableau[], int debut, int fin);
 
 template <typename T>
 void tri_rapide (T tableau[], int taille);
@@ -35,14 +38,14 @@ int main() {
       int tab[] = {9, 4, 2, 6, 5, 7, 1, 3, 8};
       int TAILLE = sizeof(tab) / sizeof(int);
 
+      display_ind(TAILLE);
       display_tab(tab, TAILLE);  cout << endl;
       tri_rapide (tab, TAILLE);
       display_tab(tab, TAILLE);  cout << endl;
    }
 
    {  // tableau de caractères
-      // /!\ ajout '\0'
-      // char chaine[] = "TRIRAPIDE";
+      // char chaine[] = "TRIRAPIDE";  // /!\ ajout '\0'
       // int TAILLE = sizeof(chaine) / sizeof(char) - 1;
 
       char chaine[] = {'T', 'R', 'I', 'R', 'A', 'P', 'I', 'D', 'E'};
@@ -59,6 +62,12 @@ int main() {
    return EXIT_SUCCESS;
 }
 
+//---------------------------------------------------------
+void display_ind(int taille) {
+   for (int i=0; i<taille; ++i)
+      cout << " " << i << " ";
+   cout << endl;
+}
 
 //---------------------------------------------------------
 template <typename T>
@@ -74,17 +83,17 @@ void display_tab (const T tab[], int taille) {
 
 //---------------------------------------------------------
 template <typename T>
-int partition (T tab[], int lo, int hi) {
+int partition (T tab[], int debut, int fin) {
 
-   int p = hi;
-   int i = lo;
+   int p = fin;
+   int i = debut;
    int j = p-1;
 
    while(true) {
       while (tab[i] < tab[p])
          ++i;
 
-      while (lo <= j and tab[j] > tab[p])
+      while (debut <= j and tab[j] > tab[p])
          --j;
 
       if (i >= j)
@@ -96,6 +105,9 @@ int partition (T tab[], int lo, int hi) {
 
    // mettre la valeur de pivot à sa place
    swap(tab[i], tab[p]);
+
+   // affiche les résultats intermédiaires de la partition
+   cout << debut << " " << i << " " << fin << endl;
 
    return i;
 }
@@ -111,6 +123,7 @@ template <typename T>
 void tri_rapide_rec(T tableau[], int debut, int fin) {
    if(debut < fin) {
       int pivot = partition(tableau, debut, fin);
+
       tri_rapide_rec(tableau, debut,   pivot-1);
       tri_rapide_rec(tableau, pivot+1, fin    );
    }
