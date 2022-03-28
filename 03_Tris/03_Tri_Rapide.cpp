@@ -139,12 +139,12 @@ void tri_rapide_rec(T tableau[], int debut, int fin) {
 //      4 5 6
 //      [1, 2, 3, 4, 5, 6, 7, 8, 9]
 //
-//      TRIRAPIDE
+//      TRIRAPIDE
 //      0 2 8
 //      0 0 1
 //      3 3 8
 //      4 4 8
 //      5 6 8
 //      7 7 8
-//      ADEIIPRRT
+//      ADEIIPRRT
 //
