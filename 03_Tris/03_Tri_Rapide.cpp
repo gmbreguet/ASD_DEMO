@@ -36,7 +36,7 @@ int main() {
 
    {  // tableau d'entiers
       int tab[] = {9, 4, 2, 6, 5, 7, 1, 3, 8};
-      int TAILLE = sizeof(tab) / sizeof(int);
+      int TAILLE = sizeof(tab) / sizeof(tab[0]);
 
       display_ind(TAILLE);
       display_tab(tab, TAILLE);  cout << endl;
@@ -46,7 +46,7 @@ int main() {
 
    {  // tableau de caractères
       char chaine[] = "TRIRAPIDE";  // /!\ ajout '\0'
-      int TAILLE = sizeof(chaine) / sizeof(char) - 1;
+      int TAILLE = sizeof(chaine) / sizeof(tab[0]) - 1;
 
       cout << endl;
 
