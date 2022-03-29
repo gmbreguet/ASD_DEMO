@@ -2,7 +2,7 @@
 // Fichier        : 04_Reservation_Dynamique.cpp
 // Version        : 01 - 2022-03-29
 // Auteur(s)      : BREGUET Guy-Michel
-// But            : démontrer quelques cas de réservations mémoire
+// But            : démontrer quelques cas de réservation mémoire
 // Modifications  :
 // Remarque(s)    :
 //---------------------------------------------------------
