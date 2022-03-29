@@ -28,9 +28,20 @@ template <typename T>
 ostream& operator<< (ostream& os, const Coord<T>& c);
 
 //---------------------------------------------------
+// sort x->y
+template <typename T>
+bool X_plusPetit_Y (const Coord<T>& lhs, const Coord<T>& rhs) {
+   if (lhs.x != rhs.x)
+      return lhs.x < rhs.x;
+   else
+      return lhs.y < rhs.y;
+}
+
+//---------------------------------------------------
 template <typename T>
 class Coord {
    friend ostream& operator<< <T>(ostream& os, const Coord<T>& c);
+   friend bool X_plusPetit_Y <T>(const Coord<T>& lhs, const Coord<T>& rhs);
 
 public:
    Coord() : x(0), y(0) {}
@@ -74,11 +85,17 @@ int main() {
    // vecteurs à traiter
    VectInt      vInt        = {4,   8,   3,   9,   8,   2,   1,   5,   6};
    VectDouble   vDouble     = {4.1, 8.1, 3.1, 9.1, 8.1, 2.1, 1.1, 5.1, 6.1};
-   VectCoordInt vCoordInt   = {{0, 1}, {1, 0}, {4, 5}, {1, 4}, {4, 5}};
+   VectCoordInt vCoordInt   = {{0, 1}, {1, 0}, {4, 8}, {1, 4}, {4, 5}};
 
    test<int>(vInt);
    test<double>(vDouble);
    test<Coord<int>>(vCoordInt);
+
+   // tri à 2 critères
+   cout << endl << "tri X puis Y" << endl;
+   cout << vCoordInt << endl;
+   sort(vCoordInt.begin(), vCoordInt.end(), X_plusPetit_Y<int>);
+   cout << vCoordInt << endl;
 
    return EXIT_SUCCESS;
 }
