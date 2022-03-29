@@ -86,3 +86,10 @@ int main() {
    return EXIT_SUCCESS;
 }
 
+//      exemple en C
+//      012345678
+//      123456789
+//
+//      exemple en C++
+//      012345678
+//      123456789
