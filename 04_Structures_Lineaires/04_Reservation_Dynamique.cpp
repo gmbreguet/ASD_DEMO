@@ -59,7 +59,7 @@ T* resDyn(size_t taille, const T& vInit) {
 //---------------------------------------------------------
 int main() {
 
-   int tab[] = {4,   8,   3,   9,   8,   2,   1,   5,   6};
+   int tab[] = {4, 8, 3, 9, 8, 2, 1, 5, 6};
    size_t TAILLE = sizeof(tab) / sizeof(tab[0]);
 
    cout << "-------------------------------------------" << endl;
@@ -76,12 +76,14 @@ int main() {
    cout << "reservation locale"                          << endl;
    unsigned* tab10Unsigned = resLocal<unsigned>(10, 3);
    afficher(tab10Unsigned, 10);
+   delete[] tab10Unsigned; // ne pas oublier ;)
    cout << endl;
 
    cout << "-------------------------------------------" << endl;
    cout << "reservation dynamique"                       << endl;
    short* tab10Short = resDyn<short>(10, 3);
    afficher(tab10Short, 10);
+   delete[] tab10Short; // ne pas oublier ;)
    cout << endl;
 
    return EXIT_SUCCESS;
