@@ -58,6 +58,14 @@ int main() {
    afficher(tab, TAILLE);
    cout << endl;
 
+   cout << endl;
+   int* ptr1 = tab;
+   int* ptr2 = ptr1 + 8;
+   cout << "echanger(ptr1, ptr2)" << endl;
+   echanger(ptr1, ptr2);
+   afficher(tab, TAILLE);
+   cout << endl;
+
    return EXIT_SUCCESS;
 }
 
@@ -82,3 +90,6 @@ void afficher(const T tab[], size_t taille) {
 //    
 //    echanger(tab+4, tab+5)
 //    [0, 1, 3, 2, 5, 4, 6, 7, 8, 9]
+//
+//    echanger(ptr1, ptr2)
+//    [8, 1, 3, 2, 5, 4, 6, 7, 0, 9]
