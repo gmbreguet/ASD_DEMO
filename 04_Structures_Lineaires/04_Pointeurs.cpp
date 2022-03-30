@@ -73,13 +73,26 @@ int main() {
    cout << "cout << *ptrV           : "   << "compile pas"  << endl;
    cout << "cout << *(int*)ptrV     : "   << *(int*)ptrV    << endl;
    cout << "cout << *(double*)ptrV  : "   << *(double*)ptrV << endl;
+   cout << endl;
 
    cout << "-------------------------------------"          << endl;
    cout << "pointeur et const ..."                          << endl;
    cout << "-------------------------------------"          << endl;
-   const int variable   = 12;
-   const int CSTE       = 12;
-   int* ptr1 = &valeur;        // pointeur non constant sur une variable
+         int variable   = 12;
+   const int CONSTANTE  = 23;
+   
+         int*       ptr1 = &variable;           // pointeur non constant sur une variable
+   const int*       ptr2 = &CONSTANTE;          // pointeur non constant sur une constante
+         int* const ptr3 = &variable;           // pointeur CONSTANT sur une variable
+   const int* const ptr4 = &CONSTANTE;          // pointeur CONSTANT sur une CONSTANTE
+
+   cout << "cout << *ptr1           : "   << *ptr1          << endl;
+   cout << "cout << *ptr2           : "   << *ptr2          << endl;
+   cout << "cout << *ptr3           : "   << *ptr3          << endl;
+   cout << "cout << *ptr4           : "   << *ptr4          << endl;
+   cout << endl;
+
+   // ou en castant ...
    
    cout << "-------------------------------------"          << endl;
    cout << "modification d'une constante ..."               << endl;
@@ -92,6 +105,7 @@ int main() {
    cout << "*ptrCste = 21"                << endl;   *ptrCste = 21;  // écriture dans la constante
    cout << "cout << *ptrCste        : "   << *ptrCste       << endl;
    cout << "cout << CSTE            : "   << CSTE           << endl;
+   cout << endl;
 
    cout << "-------------------------------------"          << endl;
    cout << "ne compile pas ..."                             << endl;
@@ -106,18 +120,18 @@ int main() {
 //      -------------------------------------
 //      adresse du tableau ...
 //      -------------------------------------
-//       tab                    : 0x7ff7bfeff270
-//      &tab                    : 0x7ff7bfeff270
-//       ptr (contenu)          : 0x7ff7bfeff270
-//      &ptr (adresse)          : 0x7ff7bfeff260
+//       tab                    : 0x7ff7bfeff210
+//      &tab                    : 0x7ff7bfeff210
+//       ptr (contenu)          : 0x7ff7bfeff210
+//      &ptr (adresse)          : 0x7ff7bfeff200
 //      *ptr (ref)              : 0
 //
 //      -------------------------------------
 //      élément d'un tableau ...
 //      -------------------------------------
-//      &tab[2]                 : 0x7ff7bfeff278
-//       tab+2                  : 0x7ff7bfeff278
-//       ptr+2                  : 0x7ff7bfeff278
+//      &tab[2]                 : 0x7ff7bfeff218
+//       tab+2                  : 0x7ff7bfeff218
+//       ptr+2                  : 0x7ff7bfeff218
 //       tab[2]                 : 2
 //       ptr[2]                 : 2
 //      *(tab+2)                : 2
@@ -148,6 +162,15 @@ int main() {
 //      cout << *ptrV           : compile pas
 //      cout << *(int*)ptrV     : 2
 //      cout << *(double*)ptrV  : 6.36599e-314
+//
+//      -------------------------------------
+//      pointeur et const ...
+//      -------------------------------------
+//      cout << *ptr1           : 12
+//      cout << *ptr2           : 23
+//      cout << *ptr3           : 12
+//      cout << *ptr4           : 23
+//
 //      -------------------------------------
 //      modification d'une constante ...
 //      -------------------------------------
@@ -157,6 +180,7 @@ int main() {
 //      *ptrCste = 21
 //      cout << *ptrCste        : 21
 //      cout << CSTE            : 21
+//
 //      -------------------------------------
 //      ne compile pas ...
 //      -------------------------------------
