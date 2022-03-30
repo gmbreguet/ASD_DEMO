@@ -68,15 +68,14 @@ int main() {
    cout << endl;
 
    cout << "-------------------------------------------" << endl;
-   cout << "taille determine en interne à la fonction"   << endl;
-   afficher(tab);
+   cout << "taille d'un entier et d'un pointeur"         << endl;
+   cout << "taille d'un pointeur : " << sizeof(int*) << endl;
+   cout << "taille d'un entier   : " << sizeof(int)  << endl;
    cout << endl;
 
    cout << "-------------------------------------------" << endl;
-   cout << "reservation locale"                          << endl;
-   unsigned* tab10Unsigned = resLocal<unsigned>(10, 3);
-   afficher(tab10Unsigned, 10);
-   delete[] tab10Unsigned; // ne pas oublier ;)
+   cout << "taille determine en interne à la fonction"   << endl;
+   afficher(tab);
    cout << endl;
 
    cout << "-------------------------------------------" << endl;
@@ -84,6 +83,13 @@ int main() {
    short* tab10Short = resDyn<short>(10, 3);
    afficher(tab10Short, 10);
    delete[] tab10Short; // ne pas oublier ;)
+   cout << endl;
+
+   cout << "-------------------------------------------" << endl;
+   cout << "reservation locale"                          << endl;
+   unsigned* tab10Unsigned = resLocal<unsigned>(10, 3);
+   afficher(tab10Unsigned, 10);
+   delete[] tab10Unsigned; // ne pas oublier ;)
    cout << endl;
 
    return EXIT_SUCCESS;
@@ -105,12 +111,18 @@ void afficher(const T tab[], size_t taille) {
 //      tableau de travail
 //      [4, 8, 3, 9, 8, 2, 1, 5, 6]
 //      -------------------------------------------
+//      taille d'un entier et d'un pointeur
+//      taille d'un pointeur : 8
+//      taille d'un entier   : 4
+//      -------------------------------------------
 //      taille determine en interne à la fonction
 //      [4, 8]
-//      -------------------------------------------
-//      reservation locale
-//      [16215, 1, 1384011408, 32760, 3220173312, 32759, 11753, 1, 1384011408, 32760]
 //      -------------------------------------------
 //      reservation dynamique
 //      [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
 //      Program ended with exit code: 0
+//      -------------------------------------------
+//      reservation locale
+//      [16219, 1, 1452894656, 32760, 3220173200, 32759, 11657, 1, 1452894656, 32760]_Test_Cpp(2813,0x100098600) malloc: *** error for object 0x7ff7bfeff150: pointer being freed was not allocated
+//      _Test_Cpp(2813,0x100098600) malloc: *** set a breakpoint in malloc_error_break to debug
+//      _Test_Cpp(2813,0x100098600) malloc: *** error for object 0x7ff7bfeff150: pointer being freed was not allocated

@@ -17,9 +17,9 @@ using namespace std;
 //---------------------------------------------------------
 int main() {
 
-   int tab[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+   int tab[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
    int* ptr = tab;
-
+   
    cout << "-------------------------------------"          << endl;
    cout << "adresse du tableau ..."                         << endl;
    cout << "-------------------------------------"          << endl;
@@ -39,7 +39,6 @@ int main() {
    cout << " tab[2]                 : "   <<  tab[2]        << endl;
    cout << " ptr[2]                 : "   <<  ptr[2]        << endl;
    cout << "*(tab+2)                : "   << *(tab+2)       << endl;
-
    cout << "*(2+tab)                : "   << *(2+tab)       << endl;
    cout << " 2[ptr]                 : "   <<  2[ptr]        << endl;
    cout << endl;
@@ -77,10 +76,22 @@ int main() {
    cout << "-------------------------------------"          << endl;
    cout << "pointeur et const ..."                          << endl;
    cout << "-------------------------------------"          << endl;
-   const int variable   = 12;
-   const int CSTE       = 12;
-   int* ptr1 = &valeur;        // pointeur non constant sur une variable
+         int variable      = 12;
+   const int CONSTANTE     = 12;
    
+         int*       ptr1   = &variable;               // pointeur non constant sur une variable
+         int*       ptr2   = (int*)&CONSTANTE;        // pointeur non constant sur une ~CONSTANTE
+
+   const int*       ptr3   = &CONSTANTE;              // pointeur CONSTANT sur une variable
+   const int*       ptr4   = &variable;               // pointeur CONSTANT sur une variable
+         
+         int* const ptr5   = &variable;               // pointeur non constant sur une variable
+         int* const ptr6   = (int*)&CONSTANTE;        // pointeur non constant sur une ~CONSTANTE
+
+   const int* const ptr7   = &CONSTANTE;              // pointeur CONSTANT sur CONSTANTE
+   const int* const ptr8   = &variable;               // pointeur CONSTANT sur CONSTANTE
+   cout << endl;
+
    cout << "-------------------------------------"          << endl;
    cout << "modification d'une constante ..."               << endl;
    cout << "-------------------------------------"          << endl;
@@ -92,6 +103,7 @@ int main() {
    cout << "*ptrCste = 21"                << endl;   *ptrCste = 21;  // écriture dans la constante
    cout << "cout << *ptrCste        : "   << *ptrCste       << endl;
    cout << "cout << CSTE            : "   << CSTE           << endl;
+   cout << endl;
 
    cout << "-------------------------------------"          << endl;
    cout << "ne compile pas ..."                             << endl;
@@ -106,18 +118,18 @@ int main() {
 //      -------------------------------------
 //      adresse du tableau ...
 //      -------------------------------------
-//       tab                    : 0x7ff7bfeff270
-//      &tab                    : 0x7ff7bfeff270
-//       ptr (contenu)          : 0x7ff7bfeff270
-//      &ptr (adresse)          : 0x7ff7bfeff260
+//       tab                    : 0x7ff7bfeff210
+//      &tab                    : 0x7ff7bfeff210
+//       ptr (contenu)          : 0x7ff7bfeff210
+//      &ptr (adresse)          : 0x7ff7bfeff200
 //      *ptr (ref)              : 0
 //
 //      -------------------------------------
 //      élément d'un tableau ...
 //      -------------------------------------
-//      &tab[2]                 : 0x7ff7bfeff278
-//       tab+2                  : 0x7ff7bfeff278
-//       ptr+2                  : 0x7ff7bfeff278
+//      &tab[2]                 : 0x7ff7bfeff218
+//       tab+2                  : 0x7ff7bfeff218
+//       ptr+2                  : 0x7ff7bfeff218
 //       tab[2]                 : 2
 //       ptr[2]                 : 2
 //      *(tab+2)                : 2
@@ -149,6 +161,10 @@ int main() {
 //      cout << *(int*)ptrV     : 2
 //      cout << *(double*)ptrV  : 6.36599e-314
 //      -------------------------------------
+//      pointeur et const ...
+//      -------------------------------------
+//
+//      -------------------------------------
 //      modification d'une constante ...
 //      -------------------------------------
 //      int* ptrCste=(int*)&CSTE
@@ -157,10 +173,9 @@ int main() {
 //      *ptrCste = 21
 //      cout << *ptrCste        : 21
 //      cout << CSTE            : 21
+//
 //      -------------------------------------
 //      ne compile pas ...
 //      -------------------------------------
 //      ptr *= 3       :
 //      ptr += ptr     :
-//
-//      Program ended with exit code: 0
