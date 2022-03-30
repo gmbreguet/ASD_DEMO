@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Fichier        : 03_Pointeurs.cpp
-// Version        : 01 - 2022-03-15
+// Fichier        : 04_Pointeurs.cpp
+// Version        : 02 - 2022-03-30
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'utilisation basic de pointeurs
 // Modifications  :
@@ -74,6 +74,13 @@ int main() {
    cout << "cout << *(int*)ptrV     : "   << *(int*)ptrV    << endl;
    cout << "cout << *(double*)ptrV  : "   << *(double*)ptrV << endl;
 
+   cout << "-------------------------------------"          << endl;
+   cout << "pointeur et const ..."                          << endl;
+   cout << "-------------------------------------"          << endl;
+   const int variable   = 12;
+   const int CSTE       = 12;
+   int* ptr1 = &valeur;        // pointeur non constant sur une variable
+   
    cout << "-------------------------------------"          << endl;
    cout << "modification d'une constante ..."               << endl;
    cout << "-------------------------------------"          << endl;
