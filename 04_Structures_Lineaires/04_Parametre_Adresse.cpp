@@ -107,3 +107,8 @@ void afficher(const T tab[], size_t taille) {
 //
 //    echanger(ptr1, ptr2)
 //    [8, 1, 3, 2, 5, 4, 6, 7, 0, 9]
+//    
+//    cout << *ptr1 : 8
+//    avancer(&ptr1) 
+//    cout << *ptr1 : 1
+//    
