@@ -77,27 +77,8 @@ int main() {
    cout << "-------------------------------------"          << endl;
    cout << "pointeur et const ..."                          << endl;
    cout << "-------------------------------------"          << endl;
-<<<<<<< HEAD
-         int variable   = 12;
-   const int CONSTANTE  = 23;
-   
-         int*       ptr1 = &variable;           // pointeur non constant sur une variable
-   const int*       ptr2 = &CONSTANTE;          // pointeur non constant sur une constante
-         int* const ptr3 = &variable;           // pointeur CONSTANT sur une variable
-   const int* const ptr4 = &CONSTANTE;          // pointeur CONSTANT sur une CONSTANTE
-
-   cout << "cout << *ptr1           : "   << *ptr1          << endl;
-   cout << "cout << *ptr2           : "   << *ptr2          << endl;
-   cout << "cout << *ptr3           : "   << *ptr3          << endl;
-   cout << "cout << *ptr4           : "   << *ptr4          << endl;
-   cout << endl;
-
-   // ou en castant ...
-=======
-         int variable      = 12;
-   const int CONSTANTE     = 12;
->>>>>>> b565734c2d7f1ddce569a9dde752e7601d86faa3
-   
+         int variable  = 12;
+   const int CONSTANTE = 23;
          int*       ptr1   = &variable;               // pointeur non constant sur une variable
          int*       ptr2   = (int*)&CONSTANTE;        // pointeur non constant sur une ~CONSTANTE
 
