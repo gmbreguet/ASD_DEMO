@@ -1,19 +1,19 @@
 //---------------------------------------------------------
-// Fichier        : 04_Fibonacci_MemPgm.cpp
+// Fichier        : 04_Fibonacci_Memorisation.cpp
 // Version        : 01 - 2022-04-02
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'algorithme de Fibonacci
 //                : en mode récursif tableau porgramming
 // Modifications  :
-// Remarque(s)    : n   : 0 1 2 3 4 5  6  7  8
-//                  f(n): 0 1 2 3 5 8 13 21 34
+// Remarque(s)    : n   : 0 1 2 3 4 5 6  7  8  9 10 
+//                  f(n): 0 1 1 2 3 5 8 13 21 34 55
 
 //---------------------------------------------------------
 
 #include <iostream>
 #include <cstdlib>
 #include <algorithm>    // fill
-#include <string>       // sous-appels
+#include <string>       // représentation des appels récursifs
 
 using namespace std;
 
@@ -95,18 +95,18 @@ unsigned fibo_mem(unsigned n) {
 //------------------------------------------------------
 int main () {
 
-   const unsigned n = 8;
+   const unsigned n = 10;
    cout << "fibo(" << n << ")" << endl; 
-   cout << "n    : 0 1 2 3 4 5 6  7  8" << endl;
-   cout << "f(n) : 0 1 1 2 3 5 8 13 21" << endl;
+   cout << "n    : 0 1 2 3 4 5 6  7  8  9 10" << endl;
+   cout << "f(n) : 0 1 1 2 3 5 8 13 21 34 55" << endl;
    cout << endl;
 
-   cout << "Fibonacci recursif" << endl;
+   cout << "Fibonacci recursif : O(n^2)" << endl;
    cout << "fibo_rec(n)    : "  << fibo_rec(n)    << endl;
    cout << "nbre appels    : "  << nbreAppelsRec  << endl;
    cout << endl;
 
-   cout << "Fibonacci tableau" << endl;
+   cout << "Fibonacci avec memorisation : O(n)" << endl;
    unsigned resultat = fibo_mem(n);
    cout << endl;
    cout << "fibo_mem(n)    : "  << resultat       << endl;
@@ -116,32 +116,36 @@ int main () {
    return EXIT_SUCCESS;
 }
 
-//    fibo(8)
-//    n    : 0 1 2 3 4 5 6  7  8
-//    f(n) : 0 1 1 2 3 5 8 13 21
+//    fibo(10)
+//    n    : 0 1 2 3 4 5 6  7  8  9 10
+//    f(n) : 0 1 1 2 3 5 8 13 21 34 55
 //    
-//    Fibonacci recursif
-//    fibo_rec(n)    : 21
-//    nbre appels    : 67
+//    Fibonacci recursif : O(n^2)
+//    fibo_rec(n)    : 55
+//    nbre appels    : 177
 //    
-//    Fibonacci tableau
-//     fibo(8)
-//    .... fibo(6)
-//    ........ fibo(4)
-//    ............ fibo(2)
-//    ................ fibo(0) <= 0
-//    .............. fibo(1) <= 1
-//    .......... fibo(3)
-//    .............. fibo(1) <= 1
-//    ............ fibo(2) <= tableau[2] = 1
-//    ...... fibo(5)
-//    .......... fibo(3) <= tableau[3] = 2
-//    ........ fibo(4) <= tableau[4] = 3
-//    .. fibo(7)
-//    ...... fibo(5) <= tableau[5] = 5
-//    .... fibo(6) <= tableau[6] = 8
+//    Fibonacci avec memorisation : O(n)
+//     fibo(10)
+//    .... fibo(8)
+//    ........ fibo(6)
+//    ............ fibo(4)
+//    ................ fibo(2)
+//    .................... fibo(0) <= 0
+//    .................. fibo(1) <= 1
+//    .............. fibo(3)
+//    .................. fibo(1) <= 1
+//    ................ fibo(2) <= tableau[2] = 1
+//    .......... fibo(5)
+//    .............. fibo(3) <= tableau[3] = 2
+//    ............ fibo(4) <= tableau[4] = 3
+//    ...... fibo(7)
+//    .......... fibo(5) <= tableau[5] = 5
+//    ........ fibo(6) <= tableau[6] = 8
+//    .. fibo(9)
+//    ...... fibo(7) <= tableau[7] = 13
+//    .... fibo(8) <= tableau[8] = 21
 //    libération du tableau
 //    
-//    fibo_mem(n)    : 21
-//    nbre appels    : 15
+//    fibo_mem(n)    : 55
+//    nbre appels    : 19
 //    
