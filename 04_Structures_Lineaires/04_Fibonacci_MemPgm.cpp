@@ -3,7 +3,7 @@
 // Version        : 01 - 2022-04-02
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'algorithme de Fibonacci
-//                : en mode récursif et itératif
+//                : en mode récursif memory porgramming
 // Modifications  :
 // Remarque(s)    : n: 0 1 2 3 4 5  6  7
 //                  f: 0 1 2 3 5 8 13 21
