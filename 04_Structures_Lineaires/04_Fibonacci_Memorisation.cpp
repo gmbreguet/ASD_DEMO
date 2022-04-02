@@ -51,7 +51,7 @@ unsigned fibo_mem(unsigned n) {
       tableau[0] = 0;                  // valeurs ...
       tableau[1] = 1;                  // ... initiales
       fill(tableau+2, tableau + n, 0); // reste à 0
-      pret = true;
+      pret       = true;
    }
 
    // affichage du déroulement
@@ -82,7 +82,8 @@ unsigned fibo_mem(unsigned n) {
    if (n == dernier) {
       unsigned tmp = tableau[n];
       delete[] tableau;
-      pret = false;
+      tableau = nullptr;
+      pret    = false;
       cout << "libération du tableau" << endl;
       return tmp;
    }
