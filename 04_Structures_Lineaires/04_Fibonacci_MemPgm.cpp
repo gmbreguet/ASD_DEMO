@@ -99,3 +99,36 @@ int main () {
 
    return EXIT_SUCCESS;
 }
+
+//    Fibonacci recursif
+//    fibo_rec(12)   : 144
+//    nbre appels    : 287
+//    
+//    Fibonacci memory
+//    fibo_mem(12)   : 
+//     fibo(12)
+//    .. fibo(10)
+//    .... fibo(8)
+//    ...... fibo(6)
+//    ........ fibo(4)
+//    .......... fibo(2) <= 1
+//    ......... fibo(3)
+//    ........... fibo(1) <= 1
+//    .......... fibo(2) <= 1
+//    ....... fibo(5)
+//    ......... fibo(3) <= memory[3] = 2
+//    ........ fibo(4) <= memory[4] = 3
+//    ..... fibo(7)
+//    ....... fibo(5) <= memory[5] = 5
+//    ...... fibo(6) <= memory[6] = 8
+//    ... fibo(9)
+//    ..... fibo(7) <= memory[7] = 13
+//    .... fibo(8) <= memory[8] = 21
+//    . fibo(11)
+//    ... fibo(9) <= memory[9] = 34
+//    .. fibo(10) <= memory[10] = 55
+//    
+//    delete memory
+//    144
+//    nbre appels    : 21
+//    
