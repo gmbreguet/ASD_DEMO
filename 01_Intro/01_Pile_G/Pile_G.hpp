@@ -14,7 +14,7 @@
 #include <vector>
 
 //---------------------------------------------------
-// Exception
+// Exceptions
 class Pile_Vide{};
 class Pile_Pleine{};
 
