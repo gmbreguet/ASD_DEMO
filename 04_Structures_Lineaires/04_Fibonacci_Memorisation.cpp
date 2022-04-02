@@ -46,7 +46,8 @@ unsigned fibo_mem(unsigned n) {
 
    static bool     pret    = false;
    static unsigned dernier = n;
-   if (not pret) {
+   if (not pret) {                     // (re)préparation
+      dernier    = n;
       tableau[0] = 0;                  // valeurs ...
       tableau[1] = 1;                  // ... initiales
       fill(tableau+2, tableau + n, 0); // reste à 0
