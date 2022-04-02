@@ -5,8 +5,8 @@
 // But            : démontrer l'algorithme de Fibonacci
 //                : en mode récursif tableau porgramming
 // Modifications  :
-// Remarque(s)    : n: 0 1 2 3 4 5  6  7
-//                  f: 0 1 2 3 5 8 13 21
+// Remarque(s)    : n   : 0 1 2 3 4 5  6  7  8
+//                  f(n): 0 1 2 3 5 8 13 21 34
 
 //---------------------------------------------------------
 
@@ -23,6 +23,7 @@ unsigned nbreAppelsMem  = 0;
 
 //------------------------------------------------------
 // récursif
+// O(n^2)
 unsigned fibo_rec(unsigned n) {
 
    ++nbreAppelsRec;
@@ -31,12 +32,13 @@ unsigned fibo_rec(unsigned n) {
    if (n < 2)
       return n;
 
-   // appel récursif
+   // appels récursifs
    return fibo_rec(n-2) + fibo_rec(n-1);
 }
 
 //------------------------------------------------------
-// récursif tableau programming
+// récursif avec mémorisation
+// => O(n)
 unsigned fibo_mem(unsigned n) {
 
    // tableau de mémorisation
@@ -93,8 +95,10 @@ unsigned fibo_mem(unsigned n) {
 //------------------------------------------------------
 int main () {
 
-   const unsigned n = 12;
+   const unsigned n = 8;
    cout << "fibo(" << n << ")" << endl; 
+   cout << "n    : 0 1 2 3 4 5 6  7  8" << endl;
+   cout << "f(n) : 0 1 1 2 3 5 8 13 21" << endl;
    cout << endl;
 
    cout << "Fibonacci recursif" << endl;
@@ -112,3 +116,32 @@ int main () {
    return EXIT_SUCCESS;
 }
 
+//    fibo(8)
+//    n    : 0 1 2 3 4 5 6  7  8
+//    f(n) : 0 1 1 2 3 5 8 13 21
+//    
+//    Fibonacci recursif
+//    fibo_rec(n)    : 21
+//    nbre appels    : 67
+//    
+//    Fibonacci tableau
+//     fibo(8)
+//    .... fibo(6)
+//    ........ fibo(4)
+//    ............ fibo(2)
+//    ................ fibo(0) <= 0
+//    .............. fibo(1) <= 1
+//    .......... fibo(3)
+//    .............. fibo(1) <= 1
+//    ............ fibo(2) <= tableau[2] = 1
+//    ...... fibo(5)
+//    .......... fibo(3) <= tableau[3] = 2
+//    ........ fibo(4) <= tableau[4] = 3
+//    .. fibo(7)
+//    ...... fibo(5) <= tableau[5] = 5
+//    .... fibo(6) <= tableau[6] = 8
+//    libération du tableau
+//    
+//    fibo_mem(n)    : 21
+//    nbre appels    : 15
+//    
