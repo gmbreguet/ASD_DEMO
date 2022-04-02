@@ -59,7 +59,6 @@ unsigned fibo_mem(unsigned n) {
       return 1;
    }
 
-
    // cas mémorisé
    if(memory[n]) {
       cout << " <= memory[" << n << "] = " << memory[n] << endl;
