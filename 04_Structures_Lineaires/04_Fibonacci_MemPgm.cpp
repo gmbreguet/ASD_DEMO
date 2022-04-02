@@ -3,7 +3,7 @@
 // Version        : 01 - 2022-04-02
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'algorithme de Fibonacci
-//                : en mode récursif memory porgramming
+//                : en mode récursif tableau porgramming
 // Modifications  :
 // Remarque(s)    : n: 0 1 2 3 4 5  6  7
 //                  f: 0 1 2 3 5 8 13 21
@@ -28,57 +28,64 @@ unsigned fibo_rec(unsigned n) {
    ++nbreAppelsRec;
 
    // cas trivial
-   if (n <= 2)
-      return 1;
+   if (n < 2)
+      return n;
 
    // appel récursif
    return fibo_rec(n-2) + fibo_rec(n-1);
 }
 
 //------------------------------------------------------
-// récursif memory programming
+// récursif tableau programming
 unsigned fibo_mem(unsigned n) {
 
-   static unsigned* memory  = new unsigned[n+1];
+   // tableau de mémorisation
+   static unsigned* tableau  = new unsigned[n+1];
 
-   static bool     ready = false;
-   static unsigned last  = n;
-   if (not ready) {
-      fill(memory, memory + n, 0);
-      memory[1] = 1;
-      ready = true;
+   static bool     pret    = false;
+   static unsigned dernier = n;
+   if (not pret) {
+      tableau[0] = 0;                  // valeurs ...
+      tableau[1] = 1;                  // ... initiales
+      fill(tableau+2, tableau + n, 0); // reste à 0
+      pret = true;
    }
 
-   cout << string(last-n, '.');
+   // affichage du déroulement
+   cout << string(2*(dernier-n), '.');
    cout << " fibo(" << n << ")";
    ++nbreAppelsMem;
 
    // cas trivial
-   if (n <= 2) {
-      cout << " <= 1" << endl;
-      return 1;
+   if (n < 2) {
+      cout << " <= " << n << endl;
+      return n;
    }
 
-   // cas mémorisé
-   if(memory[n]) {
-      cout << " <= memory[" << n << "] = " << memory[n] << endl;
-      return memory[n];
+   // cas déjà mémorisés
+   // => pas d'appel récursif
+   if(tableau[n]) {
+      cout << " <= tableau[" << n << "] = " << tableau[n] << endl;
+      return tableau[n];
    }
 
    cout << endl;
 
-   // appel récursif et mémoriser la réponse
-   memory[n] = fibo_mem(n-2) + fibo_mem(n-1);
+   // appels récursifs et mémorisation la réponse
+   tableau[n] = fibo_mem(n-2) + fibo_mem(n-1);
 
-   // dernier appel => libérer la mémoire
-   if (n == last) {
-      unsigned tmp = memory[n];
-      delete[] memory;
-      cout << endl << "delete memory" << endl;
+   // dernier appel
+   // => libérer la mémoire
+   if (n == dernier) {
+      unsigned tmp = tableau[n];
+      delete[] tableau;
+      pret = false;
+      cout << "libération du tableau" << endl;
       return tmp;
    }
 
-   return memory[n];
+   // retour de la nouvelle valeur mémorisée
+   return tableau[n];
 }
 
 //------------------------------------------------------
@@ -86,48 +93,22 @@ unsigned fibo_mem(unsigned n) {
 //------------------------------------------------------
 int main () {
 
+   const unsigned n = 12;
+   cout << "fibo(" << n << ")" << endl; 
+   cout << endl;
+
    cout << "Fibonacci recursif" << endl;
-   cout << "fibo_rec(12)   : "  << fibo_rec(12)   << endl;
+   cout << "fibo_rec(n)    : "  << fibo_rec(n)    << endl;
    cout << "nbre appels    : "  << nbreAppelsRec  << endl;
    cout << endl;
 
-   cout << "Fibonacci memory" << endl;
-   cout << "fibo_mem(12)   : "  << endl << fibo_mem(12)   << endl;
+   cout << "Fibonacci tableau" << endl;
+   unsigned resultat = fibo_mem(n);
+   cout << endl;
+   cout << "fibo_mem(n)    : "  << resultat       << endl;
    cout << "nbre appels    : "  << nbreAppelsMem  << endl;
    cout << endl;
 
    return EXIT_SUCCESS;
 }
 
-//    Fibonacci recursif
-//    fibo_rec(12)   : 144
-//    nbre appels    : 287
-//    
-//    Fibonacci memory
-//    fibo_mem(12)   : 
-//     fibo(12)
-//    .. fibo(10)
-//    .... fibo(8)
-//    ...... fibo(6)
-//    ........ fibo(4)
-//    .......... fibo(2) <= 1
-//    ......... fibo(3)
-//    ........... fibo(1) <= 1
-//    .......... fibo(2) <= 1
-//    ....... fibo(5)
-//    ......... fibo(3) <= memory[3] = 2
-//    ........ fibo(4) <= memory[4] = 3
-//    ..... fibo(7)
-//    ....... fibo(5) <= memory[5] = 5
-//    ...... fibo(6) <= memory[6] = 8
-//    ... fibo(9)
-//    ..... fibo(7) <= memory[7] = 13
-//    .... fibo(8) <= memory[8] = 21
-//    . fibo(11)
-//    ... fibo(9) <= memory[9] = 34
-//    .. fibo(10) <= memory[10] = 55
-//    
-//    delete memory
-//    144
-//    nbre appels    : 21
-//    
