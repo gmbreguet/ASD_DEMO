@@ -73,7 +73,7 @@ unsigned fibo_mem(unsigned n) {
 
    cout << endl;
 
-   // appels récursifs et mémorisation la réponse
+   // appels récursifs et mémorisation de la réponse
    tableau[n] = fibo_mem(n-2) + fibo_mem(n-1);
 
    // dernier appel
