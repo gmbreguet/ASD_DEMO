@@ -23,7 +23,7 @@ unsigned nbreAppelsMem  = 0;
 
 //------------------------------------------------------
 // récursif
-// O(n^2)
+// O(2^n)
 unsigned fibo_rec(unsigned n) {
 
    ++nbreAppelsRec;
