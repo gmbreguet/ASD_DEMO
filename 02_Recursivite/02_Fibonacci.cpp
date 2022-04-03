@@ -114,3 +114,19 @@ int main () {
    cout << endl;
    return EXIT_SUCCESS;
 }
+
+//    Fibonacci(12)
+//    n   : 0 1 2 3 4 5 6  7  8  9 10 11  12
+//    f(n): 0 1 1 2 3 5 8 13 21 34 55 89 144
+//    
+//    Fibonacci itératif
+//    fibo(n)      : 144
+//    nbre boucles : 11
+//    
+//    Fibonacci recursif
+//    fibo(n)     : 144
+//    nbre appels : 465
+//    
+//    Fibonacci avec mémorisation
+//    fibo(n)     : 144
+//    nbre appels : 23
