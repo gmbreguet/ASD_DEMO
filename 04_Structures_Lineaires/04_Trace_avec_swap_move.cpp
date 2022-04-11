@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Fichier        : 04_Trace_swap_move.cpp
+// Fichier        : 04_Trace_avec_swap_move.cpp
 // Version        : 01 - 2022-04-11
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'effect des constructeurs et destructeurs
@@ -53,6 +53,9 @@ private:
 void swap(Trace& lhs, Trace& rhs) noexcept   { lhs.swap(rhs); }
 
 //---------------------------------------------------------
+Trace f(int i) { return Trace(i); }
+
+//---------------------------------------------------------
 int main() {
    
    cout << endl;
@@ -63,6 +66,7 @@ int main() {
    Trace trace1b(1);                             cout << endl;
    Trace trace1c(trace1a);                       cout << endl;
    Trace trace1d(Trace(2));                      cout << endl;
+   Trace trace1e(f(3));                          cout << endl;
 
    cout << "vect(3, Trace(2)) : ";
    vector<Trace> vect(3, Trace(2));              cout << endl;
@@ -79,6 +83,7 @@ int main() {
    cout << "----------------------------------------" << endl;
    Trace trace2a(2);                             cout << endl;
    trace2a = trace1a;                            cout << endl;
+   trace2a = f(3);                               cout << endl;
    cout << endl;
 
    cout << "----------------------------------------" << endl;
@@ -122,6 +127,7 @@ int main() {
 //      Ci(1)
 //      CC(0)
 //      Ci(2)
+//      Ci(3)
 //      vect(3, Trace(2)) : Ci(2) CC(2) CC(2) CC(2) D(2)
 //      push_back         : CC(0) CD(2) CD(2) CD(2) D(0) D(0) D(0)
 //      emplace_back      : CC(0)
@@ -131,6 +137,7 @@ int main() {
 //      ----------------------------------------
 //      Ci(2)
 //      =C(0)
+//      Ci(3) swap(3) =D(3) D(0)
 //
 //      ----------------------------------------
 //         destructeurs
@@ -158,5 +165,4 @@ int main() {
 //      ----------------------------------------
 //         sortie de main
 //      ----------------------------------------
-//      D(0) D(0) D(0) D(2) D(2) D(2) D(2) D(0) D(1) D(0)
-
+//      D(3) D(0) D(0) D(2) D(2) D(2) D(3) D(2) D(0) D(1) D(0)
