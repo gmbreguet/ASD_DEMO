@@ -63,7 +63,15 @@ int main() {
    Trace trace1b(1);                             cout << endl;
    Trace trace1c(trace1a);                       cout << endl;
    Trace trace1d(Trace(2));                      cout << endl;
+
+   cout << "vect(3, Trace(2)) : ";
    vector<Trace> vect(3, Trace(2));              cout << endl;
+
+   cout << "push_back         : ";
+   vect.push_back(trace1a);                      cout << endl;
+
+   cout << "emplace_back      : ";
+   vect.emplace_back(trace1a);                   cout << endl;
    cout << endl;
 
    cout << "----------------------------------------" << endl;
