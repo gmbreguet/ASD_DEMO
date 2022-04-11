@@ -17,7 +17,7 @@ using namespace std;
 
 //---------------------------------------------------
 template <typename Iterator>
-void afficher (Iterator first, Iterator last);
+void afficher (const Iterator first, const Iterator last);
 
 //---------------------------------------------------
 template <typename T>
@@ -83,7 +83,7 @@ int main() {
 
 //---------------------------------------------------
 template <typename Iterator>
-void afficher (Iterator first, Iterator last) {
+void afficher (const Iterator first, const Iterator last) {
    cout << "[";
    for (auto crt=first; crt!=last; ++crt) {
       if (crt != first)
