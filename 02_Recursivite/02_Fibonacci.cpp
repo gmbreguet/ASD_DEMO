@@ -5,8 +5,8 @@
 // But            : démontrer l'algorithme de Fibonacci
 //                : en mode itératif, récursif et avec mémorisation
 // Modifications  :
-// Remarque(s)    : n   : 0 1 2 3 4 5 6  7  8  9 10 
-//                  f(n): 0 1 1 2 3 5 8 13 21 34 55
+// Remarque(s)    :   n  : 0 1 2 3 4 5 6  7  8  9 10 11  12
+//                  f(n) : 0 1 1 2 3 5 8 13 21 34 55 89 144
 //---------------------------------------------------------
 
 #include <iostream>
@@ -88,8 +88,8 @@ int main () {
    unsigned       resultat;
 
    cout << "Fibonacci(" << n << ")"                   << endl;
-   cout << "n   : 0 1 2 3 4 5 6  7  8  9 10 11  12"   << endl;
-   cout << "f(n): 0 1 1 2 3 5 8 13 21 34 55 89 144"   << endl;
+   cout << "  n  : 0 1 2 3 4 5 6  7  8  9 10 11  12"  << endl;
+   cout << "f(n) : 0 1 1 2 3 5 8 13 21 34 55 89 144"  << endl;
    cout << endl;
 
    cout << "Fibonacci itératif"                       << endl;
@@ -116,8 +116,8 @@ int main () {
 }
 
 //    Fibonacci(12)
-//    n   : 0 1 2 3 4 5 6  7  8  9 10 11  12
-//    f(n): 0 1 1 2 3 5 8 13 21 34 55 89 144
+//      n  : 0 1 2 3 4 5 6  7  8  9 10 11  12
+//    f(n) : 0 1 1 2 3 5 8 13 21 34 55 89 144
 //    
 //    Fibonacci itératif
 //    fibo(n)      : 144
