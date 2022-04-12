@@ -31,7 +31,7 @@ public:
 
    ~Trace()                                  { cout << "D("  << data << ") ";   }
 
-   void swap(Trace& other) noexcept          { using std::swap;
+   void swap(Trace& other) noexcept          { // using std::swap;
                                                std::swap(data, other.data);
                                                cout << "swap(" << data << ") "; }
 
