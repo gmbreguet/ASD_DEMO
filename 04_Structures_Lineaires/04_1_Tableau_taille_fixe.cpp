@@ -64,12 +64,16 @@ public:
    }
 
    //------------------------------------------------------
-   T& at(size_t i) noexcept {
+   T& at(size_t i) {
+      if (i>=taille)
+         throw std::out_of_range("Oops");
       return *(reinterpret_cast<T*>(ptr(i)));
    }
 
    //------------------------------------------------------
-   const T& at(size_t i) const noexcept {
+   const T& at(size_t i) const {
+      if (i>=taille)
+         throw std::out_of_range("Oops");
       return *(reinterpret_cast<T*>(ptr(i)));
    }
 
@@ -101,10 +105,47 @@ int main() {
    cout << "   affectations"                          << endl;
    cout << "----------------------------------------" << endl;
    cout << "tab1.at(0)  : "      << tab1.at(0)        << endl;
-   cout << "tab1.at(0) = 9";     tab1.at(0)=9;    cout<< endl;
+   cout << "tab1.at(0) = 9";     tab1.at(0) = 9; cout << endl;
    cout << "tab1.at(0)  : "      << tab1.at(0)        << endl;
    cout << "tab1        : "      << tab1              << endl;
+   cout << endl;
 
+   cout << "----------------------------------------" << endl;
+   cout << "   Tableau::at"                           << endl;
+   cout << "----------------------------------------" << endl;
+   cout << "tab1        : "      << tab1              << endl;
+   cout << "R : tab1.at(1) = "   << tab1.at(1)        << endl;
+   cout << "W : tab1.at(1) = 3"; tab1.at(1) = 3; cout << endl;
+   cout << "tab1        : "      << tab1              << endl;
+   cout << "R : tab1.at(3) = "   << tab1.at(3)        << endl;
+   cout << endl;
+ 
    cout << "----------------------------------------" << endl;
    return EXIT_SUCCESS;
 }
+
+
+//      ----------------------------------------
+//         constructeurs
+//      ----------------------------------------
+//      tab0        : []
+//      tab1        : [0, 0, 0]
+//
+//      ----------------------------------------
+//         affectations
+//      ----------------------------------------
+//      tab1.at(0)  : 0
+//      tab1.at(0) = 9
+//      tab1.at(0)  : 9
+//      tab1        : [9, 0, 0]
+//
+//      ----------------------------------------
+//         Tableau::at
+//      ----------------------------------------
+//      tab1        : [9, 0, 0]
+//      R : tab1.at(1)=0
+//      W : tab1.at(1)=3
+//      tab1        : [9, 3, 0]
+//      R : tab1.at(3)=libc++abi: terminating with uncaught exception of type std::out_of_range: exception
+//      terminating with uncaught exception of type std::out_of_range: exception
+//      (lldb)
