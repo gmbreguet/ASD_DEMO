@@ -69,8 +69,8 @@ int main() {
 
    cout << "-------------------------------------------" << endl;
    cout << "taille d'un entier et d'un pointeur"         << endl;
-   cout << "taille d'un pointeur : " << sizeof(int*) << endl;
-   cout << "taille d'un entier   : " << sizeof(int)  << endl;
+   cout << "taille d'un pointeur : " << sizeof(int*)     << endl;
+   cout << "taille d'un entier   : " << sizeof(int)      << endl;
    cout << endl;
 
    cout << "-------------------------------------------" << endl;
