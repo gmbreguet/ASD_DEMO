@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Fichier        : 04_Trace_avec_swap_move.cpp
-// Version        : 01 - 2022-04-11
+// Version        : 02 - 2022-04-11
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'effect des constructeurs et destructeurs
 //                : avec swap et move
@@ -16,10 +16,8 @@ using namespace std;
 
 //---------------------------------------------------------
 class Trace {
-   friend ostream& operator<< (ostream& os, const Trace& t) {
-      return os << t.data;
-   }
-   
+   friend ostream& operator<< (ostream& os, const Trace& t)
+                                             { return os << t.data;             }
 public:
    Trace()           : data(0)               { cout << "C0(" << data << ") ";   }
 
@@ -53,7 +51,9 @@ private:
 void swap(Trace& lhs, Trace& rhs) noexcept   { lhs.swap(rhs); }
 
 //---------------------------------------------------------
-Trace f(int i) { return Trace(i); }
+Trace f1(int i)            { cout << "f1 : "; return Trace(i); }
+Trace f2(Trace t)          { cout << "f2 : "; return t;        }
+Trace f3(const Trace& t)   { cout << "f3 : "; return t;        }
 
 //---------------------------------------------------------
 int main() {
@@ -66,7 +66,9 @@ int main() {
    Trace trace1b(1);                             cout << endl;
    Trace trace1c(trace1a);                       cout << endl;
    Trace trace1d(Trace(2));                      cout << endl;
-   Trace trace1e(f(3));                          cout << endl;
+   Trace trace1e(f1(3));                         cout << endl;
+   Trace trace1f(f2(trace1a));                   cout << endl;
+   Trace trace1g(f3(trace1a));                   cout << endl;
 
    cout << "vect(3, Trace(2)) : ";
    vector<Trace> vect(3, Trace(2));              cout << endl;
@@ -83,7 +85,9 @@ int main() {
    cout << "----------------------------------------" << endl;
    Trace trace2a(2);                             cout << endl;
    trace2a = trace1a;                            cout << endl;
-   trace2a = f(3);                               cout << endl;
+   trace2a = f1(3);                              cout << endl;
+   trace2a = f2(trace1a);                        cout << endl;
+   trace2a = f3(trace1a);                        cout << endl;
    cout << endl;
 
    cout << "----------------------------------------" << endl;
@@ -127,7 +131,9 @@ int main() {
 //      Ci(1)
 //      CC(0)
 //      Ci(2)
-//      Ci(3)
+//      f1 : Ci(3)
+//      CC(0) f2 : CD(0) D(0)
+//      f3 : CC(0)
 //      vect(3, Trace(2)) : Ci(2) CC(2) CC(2) CC(2) D(2)
 //      push_back         : CC(0) CD(2) CD(2) CD(2) D(0) D(0) D(0)
 //      emplace_back      : CC(0)
@@ -137,7 +143,9 @@ int main() {
 //      ----------------------------------------
 //      Ci(2)
 //      =C(0)
-//      Ci(3) swap(3) =D(3) D(0)
+//      f1 : Ci(3) swap(3) =D(3) D(0)
+//      CC(0) f2 : CD(0) swap(0) =D(0) D(3) D(0)
+//      f3 : CC(0) swap(0) =D(0) D(0)
 //
 //      ----------------------------------------
 //         destructeurs
@@ -165,4 +173,4 @@ int main() {
 //      ----------------------------------------
 //         sortie de main
 //      ----------------------------------------
-//      D(3) D(0) D(0) D(2) D(2) D(2) D(3) D(2) D(0) D(1) D(0)
+//      D(0) D(0) D(0) D(2) D(2) D(2) D(0) D(0) D(3) D(2) D(0) D(1) D(0) Program ended with exit code: 0
