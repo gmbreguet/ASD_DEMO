@@ -143,9 +143,9 @@ int main() {
 //         Tableau::at
 //      ----------------------------------------
 //      tab1        : [9, 0, 0]
-//      R : tab1.at(1)=0
-//      W : tab1.at(1)=3
+//      R : tab1.at(1) = 0
+//      W : tab1.at(1) = 3
 //      tab1        : [9, 3, 0]
-//      R : tab1.at(3)=libc++abi: terminating with uncaught exception of type std::out_of_range: exception
+//      R : tab1.at(3) = libc++abi: terminating with uncaught exception of type std::out_of_range: exception
 //      terminating with uncaught exception of type std::out_of_range: exception
 //      (lldb)
