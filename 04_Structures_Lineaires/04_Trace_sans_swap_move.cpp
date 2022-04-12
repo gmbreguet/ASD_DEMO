@@ -3,6 +3,7 @@
 // Version        : 01 - 2022-04-11
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'effect des constructeurs et destructeurs
+//                : SANS swap et move
 // Modifications  :
 // Remarque(s)    :
 //---------------------------------------------------------
