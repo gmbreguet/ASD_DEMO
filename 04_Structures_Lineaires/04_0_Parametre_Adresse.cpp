@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Fichier        : 04_Parametre_Adresse.cpp
-// Version        : 01 - 2022-03-30
+// Version        : 02 - 2022-04-12
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer le passage par adresse
 // Modifications  :
@@ -46,7 +46,7 @@ void avancer(T** adrPtr) {
 int main() {
 
    int tab[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-   size_t TAILLE = sizeof(tab) / sizeof(tab[0]);
+   const size_t TAILLE = sizeof(tab) / sizeof(tab[0]);
 
    cout << "-------------------------------------------" << endl;
    cout << "tableau de travail"        << endl;
