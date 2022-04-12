@@ -74,7 +74,7 @@ int main() {
    cout << endl;
 
    cout << "-------------------------------------------" << endl;
-   cout << "taille determine en interne à la fonction"   << endl;
+   cout << "taille déterminée en interne à la fonction"  << endl;
    afficher(tab);
    cout << endl;
 
