@@ -102,28 +102,18 @@ int main() {
    cout << endl;
 
    cout << "----------------------------------------" << endl;
-   cout << "   affectations"                          << endl;
+   cout << "   lectures et affectations .at"          << endl;
    cout << "----------------------------------------" << endl;
    cout << "tab1.at(0)  : "      << tab1.at(0)        << endl;
-   cout << "tab1.at(0) = 9";     tab1.at(0) = 9; cout << endl;
+   cout << "tab1.at(0)  = 9";    tab1.at(0) = 9; cout << endl;
    cout << "tab1.at(0)  : "      << tab1.at(0)        << endl;
    cout << "tab1        : "      << tab1              << endl;
-   cout << endl;
-
-   cout << "----------------------------------------" << endl;
-   cout << "   Tableau::at"                           << endl;
-   cout << "----------------------------------------" << endl;
-   cout << "tab1        : "      << tab1              << endl;
-   cout << "R : tab1.at(1) = "   << tab1.at(1)        << endl;
-   cout << "W : tab1.at(1) = 3"; tab1.at(1) = 3; cout << endl;
-   cout << "tab1        : "      << tab1              << endl;
-   cout << "R : tab1.at(3) = "   << tab1.at(3)        << endl;
+   cout << "tab1.at(3)  = "      << tab1.at(3)        << endl;
    cout << endl;
  
    cout << "----------------------------------------" << endl;
    return EXIT_SUCCESS;
 }
-
 
 //      ----------------------------------------
 //         constructeurs
@@ -132,20 +122,12 @@ int main() {
 //      tab1        : [0, 0, 0]
 //
 //      ----------------------------------------
-//         affectations
+//         lectures et affectations .at
 //      ----------------------------------------
 //      tab1.at(0)  : 0
-//      tab1.at(0) = 9
+//      tab1.at(0)  = 9
 //      tab1.at(0)  : 9
 //      tab1        : [9, 0, 0]
-//
-//      ----------------------------------------
-//         Tableau::at
-//      ----------------------------------------
-//      tab1        : [9, 0, 0]
-//      R : tab1.at(1) = 0
-//      W : tab1.at(1) = 3
-//      tab1        : [9, 3, 0]
-//      R : tab1.at(3) = libc++abi: terminating with uncaught exception of type std::out_of_range: exception
-//      terminating with uncaught exception of type std::out_of_range: exception
+//      tab1.at(3)  = libc++abi: terminating with uncaught exception of type std::out_of_range: Oops
+//      terminating with uncaught exception of type std::out_of_range: Oops
 //      (lldb)
