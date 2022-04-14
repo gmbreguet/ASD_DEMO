@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Fichier        : 04_Pointeurs.cpp
+// Fichier        : 04_0_Pointeurs.cpp
 // Version        : 02 - 2022-03-30
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'utilisation basic de pointeurs

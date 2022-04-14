@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Fichier        : 04_Tableau_taille_fixe.cpp
+// Fichier        : 04_1_Tableau_taille_fixe.cpp
 // Version        : 01 - 2022-04-12
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer une classe

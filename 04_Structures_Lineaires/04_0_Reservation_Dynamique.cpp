@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Fichier        : 04_Reservation_Dynamique.cpp
+// Fichier        : 04_0_Reservation_Dynamique.cpp
 // Version        : 02 - 2022-04-14
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer quelques cas de réservation mémoire
