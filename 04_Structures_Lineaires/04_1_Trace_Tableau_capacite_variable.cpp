@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Fichier        : 04_1_Trace_Tableau_capacite_variable.cpp
-// Version        : 02 - 2022-04-14
+// Version        : 02 - 2022-04-14 
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer les redimensionnements
 //                : des tableaux à capacité variable
