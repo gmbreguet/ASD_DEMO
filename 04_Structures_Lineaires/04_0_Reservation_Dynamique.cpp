@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Fichier        : 04_Reservation_Dynamique.cpp
-// Version        : 01 - 2022-03-29
+// Version        : 02 - 2022-04-14
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer quelques cas de réservation mémoire
 // Modifications  :
@@ -89,7 +89,8 @@ int main() {
    cout << "reservation locale"                          << endl;
    unsigned* tab10Unsigned = resLocal<unsigned>(10, 3);
    afficher(tab10Unsigned, 10);
-   delete[] tab10Unsigned; // ne pas oublier ;)
+   delete[] tab10Unsigned;       // ne pas oublier ;)
+   tab10Unsigned = nullptr;      // ne pas oublier ;)
    cout << endl;
 
    return EXIT_SUCCESS;

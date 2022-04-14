@@ -112,7 +112,6 @@ int main() {
    vecteur[0] = Trace(10);                       cout << endl;
    cout << endl;
 
-   
    cout << "----------------------------------------" << endl;
    cout << "   sortie de main"                        << endl;
    cout << "----------------------------------------" << endl;
