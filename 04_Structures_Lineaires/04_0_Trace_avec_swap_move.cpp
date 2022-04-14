@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Fichier        : 04_Trace_avec_swap_move.cpp
-// Version        : 02 - 2022-04-11
+// Version        : 03 - 2022-04-14
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'effect des constructeurs et destructeurs
 //                : AVEC swap et move
@@ -69,6 +69,7 @@ int main() {
    Trace trace1e(f1(3));                         cout << endl;
    Trace trace1f(f2(trace1a));                   cout << endl;
    Trace trace1g(f3(trace1a));                   cout << endl;
+   Trace trace1h(std::move(trace1e));            cout << endl;
 
    cout << "vect(3, Trace(2)) : ";
    vector<Trace> vect(3, Trace(2));              cout << endl;
@@ -88,14 +89,15 @@ int main() {
    trace2a = f1(3);                              cout << endl;
    trace2a = f2(trace1a);                        cout << endl;
    trace2a = f3(trace1a);                        cout << endl;
+   trace2a = std::move(trace1a);                 cout << endl;
    cout << endl;
 
    cout << "----------------------------------------" << endl;
    cout << "   destructeurs"                          << endl;
    cout << "----------------------------------------" << endl;
-   Trace* ptr = new Trace(4);
-   delete ptr;
-   ptr = nullptr;
+   {
+      Trace trace3(5);
+   }
    cout << endl << endl;
 
    cout << "----------------------------------------" << endl;
@@ -119,10 +121,29 @@ int main() {
    cout << endl;
 
    cout << "----------------------------------------" << endl;
+   cout << "   construction en place / déplacement"   << endl;
+   cout << "----------------------------------------" << endl;
+   Trace* ptr2a = reinterpret_cast<Trace*>(::operator new(sizeof(Trace)));
+   Trace* ptr2b = reinterpret_cast<Trace*>(::operator new(sizeof(Trace)));
+
+   new(ptr2a) Trace(trace1b);                // en place
+   new(ptr2b) Trace(std::move(*ptr2a));      // par déplacement
+   cout << endl;
+
+   cout << "ptr2a -> " << *ptr2a                      << endl;
+   cout << "ptr2b -> " << *ptr2b                      << endl;
+
+   delete(ptr2a);    ptr2a = nullptr;
+   delete(ptr2b);    ptr2b = nullptr;
+   cout << endl;
+
+   cout << endl;
+   cout << "----------------------------------------" << endl;
    cout << "   sortie de main"                        << endl;
    cout << "----------------------------------------" << endl;
    return EXIT_SUCCESS;
 }
+
 
 //      ----------------------------------------
 //         constructeurs
@@ -134,6 +155,7 @@ int main() {
 //      f1 : Ci(3)
 //      CC(0) f2 : CD(0) D(0)
 //      f3 : CC(0)
+//      CD(3)
 //      vect(3, Trace(2)) : Ci(2) CC(2) CC(2) CC(2) D(2)
 //      push_back         : CC(0) CD(2) CD(2) CD(2) D(0) D(0) D(0)
 //      emplace_back      : CC(0)
@@ -146,11 +168,12 @@ int main() {
 //      f1 : Ci(3) swap(3) =D(3) D(0)
 //      CC(0) f2 : CD(0) swap(0) =D(0) D(3) D(0)
 //      f3 : CC(0) swap(0) =D(0) D(0)
+//      swap(0) =D(0)
 //
 //      ----------------------------------------
 //         destructeurs
 //      ----------------------------------------
-//      Ci(4) D(4)
+//      Ci(5) D(5)
 //
 //      ----------------------------------------
 //         swap
@@ -171,6 +194,14 @@ int main() {
 //      trace1b : 1
 //
 //      ----------------------------------------
+//         construction en place / déplacement
+//      ----------------------------------------
+//      CC(1) CD(1)
+//      ptr2a -> 0
+//      ptr2b -> 1
+//      D(0) D(1)
+//
+//      ----------------------------------------
 //         sortie de main
 //      ----------------------------------------
-//      D(0) D(0) D(0) D(2) D(2) D(2) D(0) D(0) D(3) D(2) D(0) D(1) D(0) Program ended with exit code: 0
+//      D(0) D(0) D(0) D(2) D(2) D(2) D(3) D(0) D(0) D(0) D(2) D(0) D(1) D(0)

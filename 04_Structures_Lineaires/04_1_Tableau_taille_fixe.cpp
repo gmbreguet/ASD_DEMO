@@ -11,8 +11,13 @@
 #include <iostream>
 #include <cstdlib>
 
+//---------------------------------------------------------
 using namespace std;
 using std::byte;
+
+//---------------------------------------------------------
+// exceptions
+class Tableau_Out_of_Range{};
 
 //---------------------------------------------------------
 template <typename T>
@@ -66,14 +71,14 @@ public:
    //------------------------------------------------------
    T& at(size_t i) {
       if (i>=taille)
-         throw std::out_of_range("Oops");
+         throw Tableau_Out_of_Range{};
       return *(reinterpret_cast<T*>(ptr(i)));
    }
 
    //------------------------------------------------------
    const T& at(size_t i) const {
       if (i>=taille)
-         throw std::out_of_range("Oops");
+         throw Tableau_Out_of_Range{};
       return *(reinterpret_cast<T*>(ptr(i)));
    }
 
