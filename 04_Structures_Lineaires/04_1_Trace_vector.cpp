@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Fichier        : 04_1_Trace_Tableau_capacite_variable.cpp
+// Fichier        : 04_1_Trace_vector.cpp
 // Version        : 02 - 2022-04-14
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer les redimensionnements
