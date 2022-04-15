@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Fichier        : 04_1_Trace_vector.cpp
-// Version        : 02 - 2022-04-14
+// Version        : 03 - 2022-04-15
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer les redimensionnements
 //                : des tableaux à capacité variable
