@@ -187,4 +187,4 @@ ostream& operator<< (ostream& os, const vector<T>& v) {
 //      ----------------------------------------
 //         sortie de main
 //      ----------------------------------------
-//      D(2) D(1) D(5) D(4) Program ended with exit code: 0
+//      D(2) D(1) D(5) D(4)
