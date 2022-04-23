@@ -1,12 +1,12 @@
 //---------------------------------------------------------
 // Fichier        : 01_somme_n.cpp
-// Version        : 01 - 2021-12-05
+// Version        : 02 - 2022-04-23
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : comparer les algorithmes de la somme
 //                  des n premiers entier
 //                   - de manière itérative
 //                   - formule (Euclide) 
-// Modifications  :
+// Modifications  : ajout de unsigned long et unsigned
 // Remarque(s)    : NILL
 // Application    : combien de couples (x,y)
 //                : tel que 1 <= x < y <= 20
@@ -19,15 +19,15 @@
 using namespace std;
 
 //------------------------------------------------------
-int sommeN_iter(int n);
-int sommeN_Euclide(int n);
+unsigned long sommeN_iter   (unsigned n);
+unsigned long sommeN_Euclide(unsigned n);
 
 //------------------------------------------------------
 // main
 //------------------------------------------------------
 int main () {
 
-   int n = 12;
+   unsigned n = 12;
    cout << "boucle (" << n << ") = " << sommeN_iter(n)      << endl;
    cout << "Euclide(" << n << ") = " << sommeN_Euclide(n)   << endl;
 
@@ -35,14 +35,14 @@ int main () {
 }  // main
 
 //------------------------------------------------------
-int sommeN_iter(int n) {
-   int s = 0;
-   for (int i=0; i<=n; ++i)
+unsigned long sommeN_iter(unsigned n) {
+   unsigned long s = 0;
+   for (unsigned i=0; i<=n; ++i)
       s += i;
    return s;
 }
 
 //------------------------------------------------------
-int sommeN_Euclide(int n) {
-   return n * (n + 1) / 2;
+unsigned long sommeN_Euclide(unsigned n) {
+   return (unsigned long)n * (n + 1) / 2;
 }
