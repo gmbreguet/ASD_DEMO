@@ -5,7 +5,7 @@
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : Liste dynamique avec exceptions
 // Modifications  :
-// Remarque(s)    : NILL
+// Remarque(s)    : très incomplète (déplacement, copie profonde, ...)
 //---------------------------------------------------------
 
 //---------------------------------------------------
