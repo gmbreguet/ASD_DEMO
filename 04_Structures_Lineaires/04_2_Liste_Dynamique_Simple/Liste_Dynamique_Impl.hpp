@@ -18,7 +18,7 @@
 template <typename T>
 std::ostream& operator<< (std::ostream& os, const Liste<T>& liste) {
    os << "(";
-   Noeud<T>* courant = liste.tete;
+   const Noeud<T>* courant = liste.tete;
    while (courant != nullptr){
       if (courant != liste.tete)
          os << ", ";
@@ -29,17 +29,6 @@ std::ostream& operator<< (std::ostream& os, const Liste<T>& liste) {
    return os;
 }
 
-//---------------------------------------------------
-// private
-//---------------------------------------------------
-template <typename T>
-Noeud<T>* Liste<T>::CreerNoeud(const T& valeur){
-   Noeud<T>* temp = new Noeud<T>;
-   temp->donnee   = valeur;
-   temp->suivant  = nullptr;
-   return temp;
-}
- 
 //---------------------------------------------------
 // Constructeur
 template <typename T>
@@ -94,8 +83,7 @@ T* Liste<T>::ptrElement(const T& valeur) const {
 template <typename T>
 void Liste<T>::inserer(const T& valeur) {
    
-   Noeud<T>* nouveau = CreerNoeud(valeur);
-   nouveau->suivant  = tete;
+   Noeud<T>* nouveau = new Noeud<T> {valeur, tete};
    tete              = nouveau;
    longueur++;
 }

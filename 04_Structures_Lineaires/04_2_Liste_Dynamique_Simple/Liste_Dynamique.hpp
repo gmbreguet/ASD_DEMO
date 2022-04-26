@@ -67,7 +67,6 @@ public:
 private:
     Noeud<T>* tete;
     size_t    longueur;
-    Noeud<T>* CreerNoeud (const T& valeur);
 };
 
 #include "Liste_Dynamique_Impl.hpp"
