@@ -1,9 +1,9 @@
 //---------------------------------------------------------
 // Fichier        : 03_Fusion.cpp
-// Version        : 01 - 2022-03-15
+// Version        : 02 - 2022-04-25
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'algorithm de fusion (sans tri)
-// Modifications  :
+// Modifications  : vecteur.reserve(..) pour éviter les constructeurs
 // Remarque(s)    : une version compacte mais qui ne crée
 //                : pas de vecteur est disponible sur
 //                : https://www.cplusplus.com/reference/algorithm/merge
@@ -40,7 +40,8 @@ vector<T> fusionner1 (const vector<T>& lhs, const vector<T>& rhs) {
       return lhs;
 
    // vecteur de résultat (la taille est prête => gain de temps)
-   vector<T> resultat(lhs.size() + rhs.size());
+   vector<T> resultat;        // pour éviter les constructeurs
+   resultat.reserve(lhs.size() + rhs.size());
 
    // iterateurs de travail
    auto lhs_it = lhs.begin();
@@ -68,8 +69,8 @@ OutputIterator fusionner2 (InputIterator1 first1, InputIterator1 last1,
                            InputIterator2 first2, InputIterator2 last2,
                            OutputIterator result) {
   while (true) {
-    if (first1==last1) return std::copy(first2,last2,result);
-    if (first2==last2) return std::copy(first1,last1,result);
+    if (first1==last1) return std::copy(first2, last2, result);
+    if (first2==last2) return std::copy(first1, last1, result);
     *result++ = (*first2 < *first1)? *first2++ : *first1++;
   }
 }
