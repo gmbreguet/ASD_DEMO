@@ -1,11 +1,15 @@
 //---------------------------------------------------------
 // Fichier        : 04_1_Trace_vector.cpp
-// Version        : 03 - 2022-04-15
+// Version        : 04 - 2022-04-28
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer les redimensionnements
 //                : des tableaux à capacité variable
 // Modifications  :
-// Remarque(s)    :
+// Remarque(s)    : vector::resize() => copie ou déplacement
+//                : les déplacements se font seulement si le
+//                : constructeur et l'opérateur d'affectation
+//                : sont marquées "noexcept". Sinon ce sera par copie
+// https://stackoverflow.com/questions/28166001/resize-on-stdvector-does-not-call-move-constructor
 //---------------------------------------------------------
 
 #include <iostream>
