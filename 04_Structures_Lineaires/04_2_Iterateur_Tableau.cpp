@@ -23,10 +23,6 @@ class Iterateur {
 private:
    T*          ptr;
 public:
-
-   // debug
-   void put() const { cout << (void*)ptr; }
-   
    // constructeurs et destructeur
    Iterateur(const Iterateur<T>& it)                           = default;
    Iterateur(T* ptr = nullptr)                                 { this->ptr = ptr; }
