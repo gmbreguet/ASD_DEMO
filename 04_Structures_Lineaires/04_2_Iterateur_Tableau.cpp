@@ -33,6 +33,7 @@ public:
   ~Iterateur()                                                 {}
       
    // operateurs
+   operator bool() const                                       { return ptr; }
    Iterateur<T>& operator= (const Iterateur<T>& it)            = default;
    Iterateur<T>& operator= (T* ptr)                            { this->ptr = ptr; return *this; }
       
@@ -153,8 +154,5 @@ int main() {
    cout << "*it   : " << *it     << endl;
    cout << "*it+2 : " << *it + 2 << endl;
 
-   cout << endl;
- 
-   cout << "----------------------------------------" << endl;
    return EXIT_SUCCESS;
 }
