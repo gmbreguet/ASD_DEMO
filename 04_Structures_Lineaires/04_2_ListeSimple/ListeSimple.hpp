@@ -1,15 +1,15 @@
 //---------------------------------------------------------
-// Demo           : 04_2_Liste_Dynamique
-// Fichier        : Liste_Dynamique.h
-// Version        : 01 - 2022.04.02
+// Demo           : 04_2_ListeSimple
+// Fichier        : ListeListeSimple.h
+// Version        : 02 - 2022.05.04
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : Liste dynamique avec exceptions
-// Modifications  :
+// Modifications  : nommages
 // Remarque(s)    : très incomplète (déplacement, copie profonde, ...)
 //---------------------------------------------------------
 
-#ifndef LISTE_DYNAMIQUE_HPP
-#define LISTE_DYNAMIQUE_HPP
+#ifndef LISTE_SIMPLE_HPP
+#define LISTE_SIMPLE_HPP
 
 //-------------------------------------------------
 #include <iostream>
@@ -69,7 +69,7 @@ private:
     size_t    longueur;
 };
 
-#include "Liste_Dynamique_Impl.hpp"
+#include "ListeSimple_Impl.hpp"
 
-#endif /* LISTE_DYNAMIQUE_HPP */
+#endif /* LISTE_SIMPLE_HPP */
 

@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Demo           : 04_2_Liste_Dynamique
+// Demo           : 04_2_ListeSimple
 // Fichier        : main.cpp
-// Version        : 01 - 2022.04.02
+// Version        : 02 - 2022.05.04
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : Liste dynamique avec exceptions
 // Modifications  :
@@ -13,7 +13,7 @@
 
 #include <string>
 #include <cctype>    // toupper
-#include "Liste_Dynamique.hpp"
+#include "ListeSimple.hpp"
  
 using namespace std;
 
@@ -26,7 +26,7 @@ string majusculiser(string chaine) {
 }
 
 //---------------------------------------------------------
-int main ( ){
+int main () {
    // Instanciation d'une liste chainée liste
    Liste<string> liste;
     
