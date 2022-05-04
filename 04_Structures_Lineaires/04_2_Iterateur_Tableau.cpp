@@ -35,11 +35,11 @@ public:
       
    Iterateur<T>& operator++()                                  {                  ++ptr; return *this; }
    Iterateur<T>& operator--()                                  {                  --ptr; return *this; }
-   Iterateur<T>  operator++(int)                               { auto tmp(*this); ++ptr; return tmp;   }
-   Iterateur<T>  operator--(int)                               { auto tmp(*this); --ptr; return tmp;   }
+   Iterateur<T>  operator++(int)                               { auto tmp(*this); ++ptr; return tmp; }
+   Iterateur<T>  operator--(int)                               { auto tmp(*this); --ptr; return tmp; }
 
-   Iterateur<T>  operator+ (const difference_type mvt) const   { ptr += mvt; return *this;             }
-   Iterateur<T>  operator- (const difference_type mvt) const   { ptr -= mvt; return *this;             }
+   Iterateur<T>  operator+ (const difference_type mvt) const   { ptr += mvt; return *this; }
+   Iterateur<T>  operator- (const difference_type mvt) const   { ptr -= mvt; return *this; }
    
          T& operator*  ()                                      { return *ptr; }
    const T& operator*  () const                                { return *ptr; }
