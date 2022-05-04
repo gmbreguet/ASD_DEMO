@@ -33,16 +33,16 @@ public:
    Iterateur<T>& operator= (const Iterateur<T>& it)            = default;
    Iterateur<T>& operator= (T* ptr)                            { this->ptr = ptr; return *this; }
       
-   Iterateur<T>& operator++()                                  {                  ++ptr; return *this; }
-   Iterateur<T>& operator--()                                  {                  --ptr; return *this; }
-   Iterateur<T>  operator++(int)                               { auto tmp(*this); ++ptr; return tmp; }
-   Iterateur<T>  operator--(int)                               { auto tmp(*this); --ptr; return tmp; }
+   Iterateur<T>& operator++ ()                                 {                  ++ptr; return *this; }
+   Iterateur<T>& operator-- ()                                 {                  --ptr; return *this; }
+   Iterateur<T>  operator++ (int)                              { auto tmp(*this); ++ptr; return tmp; }
+   Iterateur<T>  operator-- (int)                              { auto tmp(*this); --ptr; return tmp; }
 
-   Iterateur<T>  operator+ (const difference_type mvt) const   { ptr += mvt; return *this; }
-   Iterateur<T>  operator- (const difference_type mvt) const   { ptr -= mvt; return *this; }
+   Iterateur<T>  operator+  (const difference_type mvt) const  { ptr += mvt; return *this; }
+   Iterateur<T>  operator-  (const difference_type mvt) const  { ptr -= mvt; return *this; }
    
-         T& operator*  ()                                      { return *ptr; }
-   const T& operator*  () const                                { return *ptr; }
+         T& operator* ()                                       { return *ptr; }
+   const T& operator* () const                                 { return *ptr; }
                   
    bool     operator== (const Iterateur& rhs) const            { return this->ptr == rhs.ptr; }
    bool     operator!= (const Iterateur& rhs) const            { return this->ptr != rhs.ptr; }
@@ -78,8 +78,8 @@ public:
    using TabIterateur       = Iterateur<T>;
    using TabIterateur_Const = Iterateur<const T>;
    
-   TabIterateur      begin()          { return TabIterateur(data); }
-   TabIterateur      end()            { return TabIterateur(data + taille); }
+   TabIterateur       begin()         { return TabIterateur(data); }
+   TabIterateur       end()           { return TabIterateur(data + taille); }
 
    TabIterateur_Const cbegin() const  { return TabIterateur_Const( (const T*)(data) ); }
    TabIterateur_Const cend()   const  { return TabIterateur_Const( (const T*)(data + taille) ); }
