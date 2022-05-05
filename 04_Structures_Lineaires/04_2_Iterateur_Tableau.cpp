@@ -1,9 +1,9 @@
 //---------------------------------------------------------
 // Fichier        : 04_2_Iterateur_Tableau.cpp
-// Version        : 01 - 2022-05-04
+// Version        : 02 - 2022-05-05
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer une classe Tableau avec iterateurs
-// Modifications  :
+// Modifications  : ajouté oépérateurs de comparaison
 // Remarque(s)    :
 // https://stackoverflow.com/questions/3582608/how-to-correctly-implement-custom-iterators-and-const-iterators
 //---------------------------------------------------------
@@ -45,7 +45,11 @@ public:
    const T& operator* () const                                 { return *ptr; }
                   
    bool     operator== (const Iterateur& rhs) const            { return this->ptr == rhs.ptr; }
-   bool     operator!= (const Iterateur& rhs) const            { return this->ptr != rhs.ptr; }
+   bool     operator!= (const Iterateur& rhs) const            { return not(*this == rhs); }
+   bool     operator<  (const Iterateur& rhs) const            { return this->ptr < rhs.ptr; }
+   bool     operator>  (const Iterateur& rhs) const            { return       rhs < *this; }
+   bool     operator<= (const Iterateur& rhs) const            { return not(*this > rhs); }
+   bool     operator>= (const Iterateur& rhs) const            { return not(*this < rhs); }
 };
 
 //---------------------------------------------------------
