@@ -44,12 +44,12 @@ public:
          T& operator* ()                                       { return *ptr; }
    const T& operator* () const                                 { return *ptr; }
                   
-   bool     operator== (const Iterateur& rhs) const            { return this->ptr == rhs.ptr; }
-   bool     operator!= (const Iterateur& rhs) const            { return not(*this == rhs); }
-   bool     operator<  (const Iterateur& rhs) const            { return this->ptr < rhs.ptr; }
-   bool     operator>  (const Iterateur& rhs) const            { return       rhs < *this; }
-   bool     operator<= (const Iterateur& rhs) const            { return not(*this > rhs); }
-   bool     operator>= (const Iterateur& rhs) const            { return not(*this < rhs); }
+   bool operator== (const Iterateur& rhs) const                { return this->ptr == rhs.ptr; }
+   bool operator!= (const Iterateur& rhs) const                { return not(*this == rhs);    }
+   bool operator<  (const Iterateur& rhs) const                { return this->ptr < rhs.ptr;  }
+   bool operator>  (const Iterateur& rhs) const                { return       rhs < *this;    }
+   bool operator<= (const Iterateur& rhs) const                { return not(*this > rhs);     }
+   bool operator>= (const Iterateur& rhs) const                { return not(*this < rhs);     }
 };
 
 //---------------------------------------------------------
@@ -156,3 +156,10 @@ int main() {
 
    return EXIT_SUCCESS;
 }
+
+//      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+//      *it   : 1
+//      *it   : 2
+//      *it   : 3
+//      *it+2 : 5
+
