@@ -1,9 +1,9 @@
 //---------------------------------------------------------
 // Fichier        : 03_Tri_Rapide.cpp
-// Version        : 01 - 2022-03-24
+// Version        : 02 - 2022-05-07
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer le tri rapide
-// Modifications  :
+// Modifications  : affichages des résultats intermédiaires
 // Remarque(s)    :
 //---------------------------------------------------------
 
@@ -26,21 +26,23 @@ template <typename T>
 int partition (T tableau[], int debut, int fin);
 
 template <typename T>
-void tri_rapide (T tableau[], int taille);
+void tri_rapide (T tableau[], int taille, bool trace=false);
 
 template <typename T>
-void tri_rapide_rec (T tableau[], int debut, int fin);
+void tri_rapide_rec (T tableau[], int debut, int fin, bool trace=false);
 
 //---------------------------------------------------------
 int main() {
 
    {  // tableau d'entiers
-      int tab[] = {9, 4, 2, 6, 5, 7, 1, 3, 8};
+      int tab[] = {5, 7, 4, 3, 2, 8, 9, 1, 6};
       int TAILLE = sizeof(tab) / sizeof(tab[0]);
 
       display_ind(TAILLE);
       display_tab(tab, TAILLE);  cout << endl;
-      tri_rapide (tab, TAILLE);
+      cout << endl;
+      tri_rapide (tab, TAILLE, true);
+      cout << endl;
       display_tab(tab, TAILLE);  cout << endl;
    }
 
@@ -80,20 +82,19 @@ void display_tab (const T tab[], int taille) {
 
 //---------------------------------------------------------
 template <typename T>
-int partition (T tab[], int debut, int fin) {
+int partition (T tableau[], int debut, int fin) {
 
    int p = fin;
    int i = debut;
    int j = p-1;
 
    while(true) {
-
       // avancer i
-      while (tab[i] < tab[p])
+      while (tableau[i] < tableau[p])
          ++i;
 
       // reculer j
-      while (debut <= j and tab[j] > tab[p])
+      while (debut <= j and tableau[j] > tableau[p])
          --j;
 
       // indices rejoints ou croisés
@@ -101,32 +102,42 @@ int partition (T tab[], int debut, int fin) {
          break;
 
       // échanger les valeurs
-      swap(tab[i], tab[j]);
+      swap(tableau[i], tableau[j]);
    }
 
    // mettre la valeur de pivot à sa place
-   swap(tab[i], tab[p]);
-
-   // affiche les résultats intermédiaires de la partition
-   cout << debut << " " << i << " " << fin << endl;
+   swap(tableau[i], tableau[p]);
 
    return i;
 }
 
 //---------------------------------------------------------
 template <typename T>
-void tri_rapide (T tableau[], int taille) {
-   tri_rapide_rec(tableau, 0, taille-1);
+void tri_rapide (T tableau[], int taille, bool trace) {
+   tri_rapide_rec(tableau, 0, taille-1, trace);
 }
 
 //---------------------------------------------------------
 template <typename T>
-void tri_rapide_rec(T tableau[], int debut, int fin) {
+void tri_rapide_rec(T tableau[], int debut, int fin, bool trace) {
    if(debut < fin) {
+      // pivot systématiquement en position hi
       int pivot = partition(tableau, debut, fin);
 
-      tri_rapide_rec(tableau, debut,   pivot-1);
-      tri_rapide_rec(tableau, pivot+1, fin    );
+      // affiche les résultats intermédiaires de la partition
+      if (trace) {
+         cout << debut << " " << pivot << " " << fin << "    ";
+         display_tab(tableau + debut, fin - debut);
+         cout << endl;
+      }
+
+      // appels récursifs
+      tri_rapide_rec(tableau, debut,   pivot-1, trace);
+      tri_rapide_rec(tableau, pivot+1, fin    , trace);
+   }
+
+   if (debut == fin and trace) {
+      cout << debut << " " << debut << " " << fin << endl;
    }
 }
 
