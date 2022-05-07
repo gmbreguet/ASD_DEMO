@@ -29,7 +29,7 @@ template <typename T>
 void tri_rapide (T tableau[], int taille, bool trace=false);
 
 template <typename T>
-void tri_rapide_rec (T tableau[], int debut, int fin, bool trace=false);
+void tri_rapide_rec (T tableau[], int taille, int debut, int fin, bool trace=false);
 
 //---------------------------------------------------------
 int main() {
@@ -114,12 +114,12 @@ int partition (T tableau[], int debut, int fin) {
 //---------------------------------------------------------
 template <typename T>
 void tri_rapide (T tableau[], int taille, bool trace) {
-   tri_rapide_rec(tableau, 0, taille-1, trace);
+   tri_rapide_rec(tableau, taille, 0, taille-1, trace);
 }
 
 //---------------------------------------------------------
 template <typename T>
-void tri_rapide_rec(T tableau[], int debut, int fin, bool trace) {
+void tri_rapide_rec(T tableau[], int taille, int debut, int fin, bool trace) {
    if(debut < fin) {
       // pivot systématiquement en position hi
       int pivot = partition(tableau, debut, fin);
@@ -127,43 +127,45 @@ void tri_rapide_rec(T tableau[], int debut, int fin, bool trace) {
       // affiche les résultats intermédiaires de la partition
       if (trace) {
          cout << debut << " " << pivot << " " << fin << "    ";
-         display_tab(tableau + debut, fin - debut);
+         display_tab(tableau, taille);
          cout << endl;
       }
 
       // appels récursifs
-      tri_rapide_rec(tableau, debut,   pivot-1, trace);
-      tri_rapide_rec(tableau, pivot+1, fin    , trace);
+      tri_rapide_rec(tableau, taille, debut,   pivot-1, trace);
+      tri_rapide_rec(tableau, taille, pivot+1, fin    , trace);
    }
 
    if (debut == fin and trace) {
-      cout << debut << " " << debut << " " << fin << endl;
+      cout << debut << " " << debut << " " << fin << "    ";
+      display_tab(tableau, taille);
+      cout << endl;
    }
 }
 
 //      0  1  2  3  4  5  6  7  8
 //      [5, 7, 4, 3, 2, 8, 9, 1, 6]
 //
-//      0 5 8    [5, 1, 4, 3, 2, 6, 9, 7]
-//      0 1 4    [1, 2, 4, 3]
-//      0 0 0
-//      2 4 4    [4, 3]
-//      2 2 3    [3]
-//      3 3 3
-//      6 7 8    [7, 8]
-//      6 6 6
-//      8 8 8
+//      0 5 8    [5, 1, 4, 3, 2, 6, 9, 7, 8]
+//      0 1 4    [1, 2, 4, 3, 5, 6, 9, 7, 8]
+//      0 0 0    [1, 2, 4, 3, 5, 6, 9, 7, 8]
+//      2 4 4    [1, 2, 4, 3, 5, 6, 9, 7, 8]
+//      2 2 3    [1, 2, 3, 4, 5, 6, 9, 7, 8]
+//      3 3 3    [1, 2, 3, 4, 5, 6, 9, 7, 8]
+//      6 7 8    [1, 2, 3, 4, 5, 6, 7, 8, 9]
+//      6 6 6    [1, 2, 3, 4, 5, 6, 7, 8, 9]
+//      8 8 8    [1, 2, 3, 4, 5, 6, 7, 8, 9]
 //
 //      [1, 2, 3, 4, 5, 6, 7, 8, 9]
 //
 //      TRIRAPIDE
-//      0 2 8    [D, A, E, R, R, P, I, T]
-//      0 0 1    [A]
-//      1 1 1
-//      3 3 8    [I, R, P, R, T]
-//      4 4 8    [I, P, R, T]
-//      5 6 8    [P, R, T]
-//      5 5 5
-//      7 7 8    [R]
-//      8 8 8
+//      0 2 8    [D, A, E, R, R, P, I, T, I]
+//      0 0 1    [A, D, E, R, R, P, I, T, I]
+//      1 1 1    [A, D, E, R, R, P, I, T, I]
+//      3 3 8    [A, D, E, I, R, P, R, T, I]
+//      4 4 8    [A, D, E, I, I, P, R, T, R]
+//      5 6 8    [A, D, E, I, I, P, R, T, R]
+//      5 5 5    [A, D, E, I, I, P, R, T, R]
+//      7 7 8    [A, D, E, I, I, P, R, R, T]
+//      8 8 8    [A, D, E, I, I, P, R, R, T]
 //      ADEIIPRRT
