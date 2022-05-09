@@ -132,11 +132,11 @@ void tri_rapide_rec(T tableau[], int taille, int debut, int fin, bool trace) {
       }
 
       // appels récursifs
-      cout << debut << " " << debut << " " << fin << endl;
       tri_rapide_rec(tableau, taille, debut,   pivot-1, trace);
       tri_rapide_rec(tableau, taille, pivot+1, fin    , trace);
    }
 
+   // cas simples
    if (debut == fin and trace) {
       cout << debut << " " << debut << " " << fin << "    ";
       display_tab(tableau, taille);
