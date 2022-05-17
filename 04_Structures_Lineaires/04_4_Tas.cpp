@@ -53,10 +53,12 @@ int main() {
    // empty heap
    Heap<int> heap1;
    cout << heap1 << endl;
+   cout << endl;
 
    for (int i=0; i<10; ++i)
       heap1.push(i);
    cout << heap1 << endl;
+   cout << endl;
 
    // from a vecteur => heap
    vector<int> vecteur = {1, 2, 3, 4, 5, 6};
