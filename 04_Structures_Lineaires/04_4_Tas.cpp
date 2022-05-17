@@ -154,3 +154,10 @@ size_t Heap<T>::greatest(size_t i) const {
       return left(i);
 }
 
+
+//      []
+//      [9, 8, 5, 6, 7, 1, 4, 0, 3, 2]
+//
+//      [6, 5, 1, 4, 2, 3]
+//      heap2.top : 6
+//      [5, 4, 1, 3, 2]
