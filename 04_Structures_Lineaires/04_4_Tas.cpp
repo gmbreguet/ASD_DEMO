@@ -121,7 +121,6 @@ template <typename T>
 T Heap<T>::top() const {
    if (heapSize == 0)
       throw invalid_argument("Heap::pop - empty");
-
    return array[0];
 }
 

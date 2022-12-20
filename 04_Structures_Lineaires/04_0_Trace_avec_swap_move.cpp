@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Fichier        : 04_0_Trace_avec_swap_move.cpp
-// Version        : 03 - 2022-04-14
+// Version        : 04 - 2022-12-20
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'effect des constructeurs et destructeurs
 //                : AVEC swap et move
@@ -57,67 +57,67 @@ Trace f3(const Trace& t)   { cout << "f3 : "; return t;        }
 
 //---------------------------------------------------------
 int main() {
-   
+
    cout << endl;
    cout << "----------------------------------------" << endl;
    cout << "   constructeurs"                         << endl;
    cout << "----------------------------------------" << endl;
-   Trace trace1a;                                cout << endl;
-   Trace trace1b(1);                             cout << endl;
-   Trace trace1c(trace1a);                       cout << endl;
-   Trace trace1d(Trace(2));                      cout << endl;
-   Trace trace1e(f1(3));                         cout << endl;
-   Trace trace1f(f2(trace1a));                   cout << endl;
-   Trace trace1g(f3(trace1a));                   cout << endl;
-   Trace trace1h(std::move(trace1e));            cout << endl;
+   Trace trace1a;                                cout << endl;    // C0(0)
+   Trace trace1b(1);                             cout << endl;    // Ci(1)
+   Trace trace1c(trace1a);                       cout << endl;    // CC(0)
+   Trace trace1d(Trace(2));                      cout << endl;    // Ci(2)
+   Trace trace1e(f1(3));                         cout << endl;    // f1 : Ci(3)
+   Trace trace1f(f2(trace1a));                   cout << endl;    // CC(0) f2 : CD(0) D(0)
+   Trace trace1g(f3(trace1a));                   cout << endl;    // f3 : CC(0)
+   Trace trace1h(std::move(trace1e));            cout << endl;    // CD(3)
 
    cout << "vect(3, Trace(2)) : ";
-   vector<Trace> vect(3, Trace(2));              cout << endl;
+   vector<Trace> vect(3, Trace(2));              cout << endl;    // Ci(2) CC(2) CC(2) CC(2) D(2)
 
    cout << "push_back         : ";
-   vect.push_back(trace1a);                      cout << endl;
+   vect.push_back(trace1a);                      cout << endl;    // CC(0) CD(2) CD(2) CD(2) D(0) D(0) D(0)
 
    cout << "emplace_back      : ";
-   vect.emplace_back(trace1a);                   cout << endl;
+   vect.emplace_back(trace1a);                   cout << endl;    // CC(0)
    cout << endl;
 
    cout << "----------------------------------------" << endl;
    cout << "   affectations"                          << endl;
    cout << "----------------------------------------" << endl;
-   Trace trace2a(2);                             cout << endl;
-   trace2a = trace1a;                            cout << endl;
-   trace2a = f1(3);                              cout << endl;
-   trace2a = f2(trace1a);                        cout << endl;
-   trace2a = f3(trace1a);                        cout << endl;
-   trace2a = std::move(trace1a);                 cout << endl;
+   Trace trace2a(2);                             cout << endl;    // Ci(2)
+   trace2a = trace1a;                            cout << endl;    // =C(0)
+   trace2a = f1(3);                              cout << endl;    // f1 : Ci(3) swap(3) =D(3) D(0)
+   trace2a = f2(trace1a);                        cout << endl;    // CC(0) f2 : CD(0) swap(0) =D(0) D(3) D(0)
+   trace2a = f3(trace1a);                        cout << endl;    // f3 : CC(0) swap(0) =D(0) D(0)
+   trace2a = std::move(trace1a);                 cout << endl;    // swap(0) =D(0)
    cout << endl;
 
    cout << "----------------------------------------" << endl;
    cout << "   destructeurs"                          << endl;
    cout << "----------------------------------------" << endl;
-   Trace* ptr = new Trace(4);
-   delete ptr;
+   Trace* ptr = new Trace(4);                                     // Ci(4)
+   delete ptr;                                                    // D(4)
    ptr = nullptr;
    cout << endl << endl;
 
    cout << "----------------------------------------" << endl;
    cout << "   swap"                                  << endl;
    cout << "----------------------------------------" << endl;
-   cout << "trace1a : " << trace1a                    << endl;
-   cout << "trace1b : " << trace1b                    << endl;
-   trace1a.swap(trace1b);                        cout << endl;
-   cout << "trace1a : " << trace1a                    << endl;
-   cout << "trace1b : " << trace1b                    << endl;
+   cout << "trace1a : " << trace1a                    << endl;    // trace1a : 0
+   cout << "trace1b : " << trace1b                    << endl;    // trace1b : 1
+   trace1a.swap(trace1b);                        cout << endl;    // swap(1)
+   cout << "trace1a : " << trace1a                    << endl;    // trace1a : 1
+   cout << "trace1b : " << trace1b                    << endl;    // trace1b : 0
    cout << endl;
 
    cout << "----------------------------------------" << endl;
    cout << "   déplacement"                           << endl;
    cout << "----------------------------------------" << endl;
-   cout << "trace1a : " << trace1a                    << endl;
-   cout << "trace1b : " << trace1b                    << endl;
-   trace1a = std::move(trace1b);                 cout << endl;
-   cout << "trace1a : " << trace1a                    << endl;
-   cout << "trace1b : " << trace1b                    << endl;
+   cout << "trace1a : " << trace1a                    << endl;    // trace1a : 1
+   cout << "trace1b : " << trace1b                    << endl;    // trace1b : 0
+   trace1a = std::move(trace1b);                 cout << endl;    // swap(0) =D(0)
+   cout << "trace1a : " << trace1a                    << endl;    // trace1a : 0
+   cout << "trace1b : " << trace1b                    << endl;    // trace1b : 1
    cout << endl;
 
    cout << "----------------------------------------" << endl;
@@ -126,15 +126,15 @@ int main() {
    Trace* ptr2a = reinterpret_cast<Trace*>(::operator new(sizeof(Trace)));
    Trace* ptr2b = reinterpret_cast<Trace*>(::operator new(sizeof(Trace)));
 
-   new(ptr2a) Trace(trace1b);                // en place
-   new(ptr2b) Trace(std::move(*ptr2a));      // par déplacement
+   new(ptr2a) Trace(trace1b);                // en place          // CC(1)
+   new(ptr2b) Trace(std::move(*ptr2a));      // par déplacement   // CD(1)
    cout << endl;
 
-   cout << "ptr2a -> " << *ptr2a                      << endl;
-   cout << "ptr2b -> " << *ptr2b                      << endl;
+   cout << "ptr2a -> " << *ptr2a                      << endl;    // ptr2a -> 0
+   cout << "ptr2b -> " << *ptr2b                      << endl;    // ptr2b -> 1
 
-   delete(ptr2a);    ptr2a = nullptr;
-   delete(ptr2b);    ptr2b = nullptr;
+   delete(ptr2a);    ptr2a = nullptr;                             // D(0)
+   delete(ptr2b);    ptr2b = nullptr;                             // D(1)
    cout << endl;
 
    cout << endl;
@@ -144,63 +144,4 @@ int main() {
    return EXIT_SUCCESS;
 }
 
-//      ----------------------------------------
-//         constructeurs
-//      ----------------------------------------
-//      C0(0)
-//      Ci(1)
-//      CC(0)
-//      Ci(2)
-//      f1 : Ci(3)
-//      CC(0) f2 : CD(0) D(0)
-//      f3 : CC(0)
-//      CD(3)
-//      vect(3, Trace(2)) : Ci(2) CC(2) CC(2) CC(2) D(2)
-//      push_back         : CC(0) CD(2) CD(2) CD(2) D(0) D(0) D(0)
-//      emplace_back      : CC(0)
-//
-//      ----------------------------------------
-//         affectations
-//      ----------------------------------------
-//      Ci(2)
-//      =C(0)
-//      f1 : Ci(3) swap(3) =D(3) D(0)
-//      CC(0) f2 : CD(0) swap(0) =D(0) D(3) D(0)
-//      f3 : CC(0) swap(0) =D(0) D(0)
-//      swap(0) =D(0)
-//
-//      ----------------------------------------
-//         destructeurs
-//      ----------------------------------------
-//      Ci(4) D(4)
-//
-//      ----------------------------------------
-//         swap
-//      ----------------------------------------
-//      trace1a : 0
-//      trace1b : 1
-//      swap(1)
-//      trace1a : 1
-//      trace1b : 0
-//
-//      ----------------------------------------
-//         déplacement
-//      ----------------------------------------
-//      trace1a : 1
-//      trace1b : 0
-//      swap(0) =D(0)
-//      trace1a : 0
-//      trace1b : 1
-//
-//      ----------------------------------------
-//         construction en place / déplacement
-//      ----------------------------------------
-//      CC(1) CD(1)
-//      ptr2a -> 0
-//      ptr2b -> 1
-//      D(0) D(1)
-//
-//      ----------------------------------------
-//         sortie de main
-//      ----------------------------------------
-//      D(0) D(0) D(0) D(2) D(2) D(2) D(3) D(0) D(0) D(0) D(2) D(0) D(1) D(0) Program ended with exit code: 0
+// D(0) D(0) D(0) D(2) D(2) D(2) D(3) D(0) D(0) D(0) D(2) D(0) D(1) D(0)
