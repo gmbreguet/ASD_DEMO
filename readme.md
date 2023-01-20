@@ -13,7 +13,7 @@ Vous pouvez utiliser ces codes comme suit :
 
    - Cloner ce git avec la commande
 
-      `git clone git@github.com:gmbreguet/PRG1_DEMO.git`
+      `git clone git@github.com:gmbreguet/ASD_DEMO.git`
 
 **NB** : Ce repo est mis à jour très régulièrement.</br>
 Merci d'avance de vos retours.</br>
