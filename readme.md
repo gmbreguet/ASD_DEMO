@@ -5,7 +5,7 @@ Ce repo vise à mettre à disposition des étudiants de la [HEIG-VD](https://hei
 Vous pouvez utiliser ces codes comme suit :
    - Visualiser les codes dans votre navigateur avec l'URL
 
-      `https://github.com/gmbreguet/PRG1_DEMO`
+      `https://github.com/gmbreguet/ASD_DEMO`
 
    - Copier/Coller le code dans votre environnement de développement
 
