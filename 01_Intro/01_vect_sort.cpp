@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Fichier        : 01_vect_sort.cpp
-// Version        : 01 - 2022-03-03
+// Version        : 02 - 2023-02-27
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : tri d'un vector
 // Modifications  :
@@ -31,10 +31,6 @@ template <typename T>
 void sortVecteur(vector<T>& v);
 
 //------------------------------------------------------
-template <typename T, typename Fonction>
-void sortVecteurFct(vector<T>& v, Fonction fct);
-
-//------------------------------------------------------
 template <typename Iterator>
 void sortIterator(Iterator begin, Iterator end);
 
@@ -44,17 +40,14 @@ void sortIterator(Iterator begin, Iterator end);
 int main () {
 
    // vecteurs de travail
-   vector<int> v1, v2, v3;
-   v1 = v2 = v3 = create<int>(5);
+   vector<int> v1, v2;
+   v1 = v2 = create<int>(5);
 
    sortVecteur(v1);
    cout << v1 << endl;
 
    sortIterator(v2.begin(), v2.end());
    cout << v2 << endl;
-
-   sortVecteurFct(v3, std::sort);
-   cout << v3 << endl;
 
    return EXIT_SUCCESS;
 }  // main
@@ -84,12 +77,6 @@ vector<T> create(size_t taille) {
 template <typename T>
 void sortVecteur(vector<T>& v) {
    sortIterator(v.begin(), v.end());
-}
-
-//------------------------------------------------------
-template <typename T, typename Fonction>
-void sortVecteurFct(vector<T>& v, Fonction fct) {
-   sort(v.begin(), v.end());
 }
 
 //------------------------------------------------------
