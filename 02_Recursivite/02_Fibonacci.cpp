@@ -96,19 +96,19 @@ int main () {
    cout << "f(n) : 0 1 1 2 3 5 8 13 21 34 55 89 144"  << endl;
    cout << endl;
 
-   cout << "Fibonacci itératif"                       << endl;
+   cout << "Fibonacci itératif => O(n)"               << endl;
    resultat = fibo_iter(n);
    cout << "fibo(n)      : "    << resultat           << endl; 
    cout << "nbre boucles : "    << nbreBouclesIter    << endl;
    cout << endl; 
 
-   cout << "Fibonacci recursif"                       << endl;
+   cout << "Fibonacci recursif => O(2^n)"             << endl;
    resultat = fibo_rec(n);
    cout << "fibo(n)     : "    << resultat            << endl; 
    cout << "nbre appels : "    << nbreAppelsRec       << endl;
    cout << endl; 
 
-   cout << "Fibonacci avec mémorisation"              << endl;
+   cout << "Fibonacci avec mémorisation => O(n)"      << endl;
    Memo memo;
    resultat = fibo_dyn(n, memo);
    cout << "fibo(n)     : "    << resultat            << endl; 
@@ -127,15 +127,15 @@ int main () {
 //        n  : 0 1 2 3 4 5 6  7  8  9 10 11  12
 //      f(n) : 0 1 1 2 3 5 8 13 21 34 55 89 144
 //
-//      Fibonacci itératif
+//      Fibonacci itératif => O(n)
 //      fibo(n)      : 144
 //      nbre boucles : 11
 //
-//      Fibonacci recursif
+//      Fibonacci recursif => O(2^n)
 //      fibo(n)     : 144
 //      nbre appels : 465
 //
-//      Fibonacci avec mémorisation
+//      Fibonacci avec mémorisation => O(2*n) => O(n)
 //      fibo(n)     : 144
 //      nbre appels : 23
 //
