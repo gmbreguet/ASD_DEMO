@@ -1,12 +1,13 @@
 //---------------------------------------------------------
 // Fichier        : 02_Fibonacci.cpp
-// Version        : 01 - 2022-01-27
+// Version        : 03 - 2023-02-28
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'algorithme de Fibonacci
 //                : en mode itératif, récursif et avec mémorisation
-// Modifications  :
+// Modifications  : ajouter Golden Ratio
 // Remarque(s)    :   n  : 0 1 2 3 4 5 6  7  8  9 10 11  12
 //                  f(n) : 0 1 1 2 3 5 8 13 21 34 55 89 144
+//                  https://www.youtube.com/watch?v=P8Xa2BitN3I
 //---------------------------------------------------------
 
 #include <iostream>
@@ -18,11 +19,11 @@ using namespace std;
 // pour compter les appels ou les boucles
 unsigned nbreBouclesIter   = 0;
 unsigned nbreAppelsRec     = 0;
-unsigned nbreAppelsMem     = 0;
+unsigned nbreAppelsDyn     = 0;
 
 //------------------------------------------------------
 // itératif => O(n)
-unsigned fibo_iter(unsigned n) {
+unsigned fibo_iter(unsigned n, bool showGoldenRatio = false) {
 
    // cas trivial
    if (n <= 1)
@@ -37,6 +38,9 @@ unsigned fibo_iter(unsigned n) {
       fn1 = fn;
       fn  = fn2 + fn1;
       ++nbreBouclesIter;
+      
+      if (showGoldenRatio)
+         cout << (double)fn / fn1 << endl;
    } 
 
    return fn;
@@ -59,10 +63,10 @@ unsigned fibo_rec(unsigned n) {
 //------------------------------------------------------
 // récursif (mémorisation) => O(2*n) => O(n)
 using Memo = map<unsigned, unsigned>;
-unsigned fibo_mem(unsigned n,
+unsigned fibo_dyn(unsigned n,
                   Memo&    memo) {
 
-   ++nbreAppelsMem;
+   ++nbreAppelsDyn;
 
    // cas trivial
    if (n < 2)
@@ -73,7 +77,7 @@ unsigned fibo_mem(unsigned n,
       return memo.at(n);
 
    // appels récursifs et memorisation
-   memo.emplace(n, fibo_mem(n-2, memo) + fibo_mem(n-1, memo));
+   memo.emplace(n, fibo_dyn(n-2, memo) + fibo_dyn(n-1, memo));
 
    // returne  la valeur mémorisée
    return memo.at(n); 
@@ -106,27 +110,44 @@ int main () {
 
    cout << "Fibonacci avec mémorisation"              << endl;
    Memo memo;
-   resultat = fibo_mem(n, memo);
+   resultat = fibo_dyn(n, memo);
    cout << "fibo(n)     : "    << resultat            << endl; 
-   cout << "nbre appels : "    << nbreAppelsMem       << endl;
+   cout << "nbre appels : "    << nbreAppelsDyn       << endl;
    cout << endl; 
+
+   cout << "Fibonacci - Golden Ratio"                       << endl;
+   fibo_iter(n, true);
+   cout << endl;
 
    cout << endl;
    return EXIT_SUCCESS;
 }
 
-//    Fibonacci(12)
-//      n  : 0 1 2 3 4 5 6  7  8  9 10 11  12
-//    f(n) : 0 1 1 2 3 5 8 13 21 34 55 89 144
-//    
-//    Fibonacci itératif
-//    fibo(n)      : 144
-//    nbre boucles : 11
-//    
-//    Fibonacci recursif
-//    fibo(n)     : 144
-//    nbre appels : 465
-//    
-//    Fibonacci avec mémorisation
-//    fibo(n)     : 144
-//    nbre appels : 23
+//      Fibonacci(12)
+//        n  : 0 1 2 3 4 5 6  7  8  9 10 11  12
+//      f(n) : 0 1 1 2 3 5 8 13 21 34 55 89 144
+//
+//      Fibonacci itératif
+//      fibo(n)      : 144
+//      nbre boucles : 11
+//
+//      Fibonacci recursif
+//      fibo(n)     : 144
+//      nbre appels : 465
+//
+//      Fibonacci avec mémorisation
+//      fibo(n)     : 144
+//      nbre appels : 23
+//
+//      Fibonacci - Golden Ratio
+//      1
+//      2
+//      1.5
+//      1.66667
+//      1.6
+//      1.625
+//      1.61538
+//      1.61905
+//      1.61765
+//      1.61818
+//      1.61798
