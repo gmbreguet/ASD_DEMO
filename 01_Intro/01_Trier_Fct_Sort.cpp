@@ -49,7 +49,6 @@ int main () {
    cout << v1 << endl;
    trier<int>(v1, sort<vector<int>::iterator>);
    cout << v1 << endl << endl;
-
    
    cout << "-------------------" << endl;
    cout << "vector<T>::iterator" << endl;
