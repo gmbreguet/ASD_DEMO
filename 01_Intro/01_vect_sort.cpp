@@ -1,9 +1,9 @@
 //---------------------------------------------------------
 // Fichier        : 01_vect_sort.cpp
-// Version        : 02 - 2023-02-27
+// Version        : 03 - 2023-03-03
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : tri d'un vector
-// Modifications  :
+// Modifications  : operator<< : vector n'était pas en référence const
 // Remarque(s)    : NILL
 // Application    :
 //---------------------------------------------------------
@@ -20,7 +20,7 @@ int generateur();
 
 //------------------------------------------------------
 template <typename T>
-ostream& operator<< (ostream& os, vector<T> v);
+ostream& operator<< (ostream& os, const vector<T>& v);
 
 //------------------------------------------------------
 template <typename T>
@@ -54,7 +54,7 @@ int main () {
 
 //------------------------------------------------------
 template <typename T>
-ostream& operator<< (ostream& os, vector<T> v) {
+ostream& operator<< (ostream& os, const vector<T>& v) {
    os << "[";
    for (size_t i=0; i<v.size(); ++i) {
       if (i)
