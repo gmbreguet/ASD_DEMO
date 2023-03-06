@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Fichier        : 02_Scrable.cpp
-// Version        : 02 - 2022-03-09
+// Fichier        : 02_permutations.cpp
+// Version        : 03 - 2023-03-06
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer les algorithmes recursifs générant
 //                : toutes les combinaisons d'une série de lettres
