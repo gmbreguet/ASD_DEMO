@@ -42,27 +42,27 @@ void permuter4(string& S, size_t n);
 //------------------------------------------------------
 int main () {
 
-   cout << "Scrabble récursif" << endl;
-   cout << "----------------" << endl << endl;
+   cout << "Permutations récursives" << endl;
+   cout << "-----------------------" << endl << endl;
 
    const string CHAINE = "ABC";
    
-   cout << "approche naive" << endl;
+   cout << "approche naive => O(n * n!)" << endl;
    string chaine1 = CHAINE;
    permuter1(chaine1, chaine1.size());
 
    cout << endl;
-   cout << "double échange" << endl;
+   cout << "double échange => O(2 * 1.71 * n!)" << endl;
    string chaine2 = CHAINE;
    permuter2(chaine2, chaine2.size());
 
    cout << endl;
-   cout << "sans échange inutile" << endl;
+   cout << "sans échange inutile => O(1 * 1.71 * n!)" << endl;
    string chaine3 = CHAINE;
    permuter3(chaine3, chaine3.size());
 
    cout << endl;
-   cout << "algorithme de Heap" << endl;
+   cout << "algorithme de Heap => O(n! - 1)" << endl;
    string chaine4 = CHAINE;
    permuter4(chaine4, chaine4.size());
 
@@ -159,10 +159,10 @@ void permuter4(string& S, size_t n) {
    } // else
 } // permuter4
 
-//      Scrabble récursif
-//      ----------------
+//      Permutations récursives
+//      -----------------------
 //
-//      approche naive
+//      approche naive => O(n * n!)
 //      1) ABC
 //      2) BAC
 //      3) CBA
@@ -170,7 +170,7 @@ void permuter4(string& S, size_t n) {
 //      5) CAB
 //      6) ACB
 //
-//      double échange
+//      double échange => O(2 * 1.71 * n!)
 //      1) BCA
 //      2) CBA
 //      3) CAB
@@ -178,7 +178,7 @@ void permuter4(string& S, size_t n) {
 //      5) BAC
 //      6) ABC
 //
-//      sans échange inutile
+//      sans échange inutile => O(1 * 1.71 * n!)
 //      1) BCA
 //      2) CBA
 //      3) CAB
@@ -186,11 +186,10 @@ void permuter4(string& S, size_t n) {
 //      5) BAC
 //      6) ABC
 //
-//      algorithme de Heap
+//      algorithme de Heap => O(n! - 1)
 //      1) ABC
 //      2) BAC
 //      3) BCA
 //      4) CBA
 //      5) CAB
 //      6) ACB
-//      Program ended with exit code: 0
