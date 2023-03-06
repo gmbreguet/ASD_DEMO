@@ -71,7 +71,7 @@ int main () {
 
 //------------------------------------------------------
 // approache naive
-// NB : la chaine est reçue par valeur
+// NB : la chaine est reçue par valeur (en copie)
 void permuter1(string S, size_t n) {
 
    // afficher les appels et les résultats intermédiaires
@@ -91,6 +91,7 @@ void permuter1(string S, size_t n) {
 
 //------------------------------------------------------
 // double échange
+// NB : la chaine est reçue par référence => double échange
 void permuter2(string& S, size_t n) {
 
    // afficher les appels et les résultats intermédiaires
@@ -157,3 +158,39 @@ void permuter4(string& S, size_t n) {
       } // for
    } // else
 } // permuter4
+
+//      Scrabble récursif
+//      ----------------
+//
+//      approche naive
+//      1) ABC
+//      2) BAC
+//      3) CBA
+//      4) BCA
+//      5) CAB
+//      6) ACB
+//
+//      double échange
+//      1) BCA
+//      2) CBA
+//      3) CAB
+//      4) ACB
+//      5) BAC
+//      6) ABC
+//
+//      sans échange inutile
+//      1) BCA
+//      2) CBA
+//      3) CAB
+//      4) ACB
+//      5) BAC
+//      6) ABC
+//
+//      algorithme de Heap
+//      1) ABC
+//      2) BAC
+//      3) BCA
+//      4) CBA
+//      5) CAB
+//      6) ACB
+//      Program ended with exit code: 0
