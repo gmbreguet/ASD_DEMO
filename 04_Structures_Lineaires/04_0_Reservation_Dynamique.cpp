@@ -82,15 +82,15 @@ int main() {
    cout << "reservation dynamique"                       << endl;
    short* tab10Short = resDyn<short>(10, 3);
    afficher(tab10Short, 10);
-   delete[] tab10Short; // ne pas oublier ;)
+   delete[] tab10Short;    // ne pas oublier ;)
+   tab10Short = nullptr;   // ne pas oublier ;)
    cout << endl;
 
    cout << "-------------------------------------------" << endl;
    cout << "reservation locale"                          << endl;
    unsigned* tab10Unsigned = resLocal<unsigned>(10, 3);
    afficher(tab10Unsigned, 10);
-   delete[] tab10Unsigned;       // ne pas oublier ;)
-   tab10Unsigned = nullptr;      // ne pas oublier ;)
+   // delete[] tab10Unsigned; // => crash : pointer being freed was not allocated
    cout << endl;
 
    return EXIT_SUCCESS;
