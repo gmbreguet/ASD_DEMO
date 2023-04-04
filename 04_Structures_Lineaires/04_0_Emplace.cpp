@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Fichier        : 04_0_Emplace.cpp
-// Version        : 01 - 2022-04-12
+// Fichier        : 04_0_Emplace_Bytes.cpp
+// Version        : 02 - 2023-04-04
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer l'utilisation de
 //                : - emplace
