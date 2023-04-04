@@ -109,16 +109,16 @@ int main() {
 }
 
 //---------------------------------------------------------
-// version habituelle mais avec - i - 1 ... ;(
+// version habituelle
 //---------------------------------------------------------
 uintll bubbleSort0(Vecteur& v){
    unsigned long cpt = 0;
-   if (v.size() > 0){    // size_t = unsigned => 0 - 1 => BCP
-      for (size_t i = 0; i < v.size() - 1; ++i){
-         for (size_t j = 0; j < v.size() - i - 1; ++j){
+   if (v.size() > 0) {
+      for (size_t i = 0; i < v.size() - 1; ++i) {
+         for (size_t j = 0; j < v.size() - i - 1; ++j) {
             ++cpt;   // itérations
             if (v[j] > v[j + 1]) {
-               swap(v[j], v[j + 1]); // permutation
+               swap(v[j], v[j + 1]); // permutation
             } // if
          } // for j
       } // for i
@@ -129,12 +129,12 @@ uintll bubbleSort0(Vecteur& v){
 //---------------------------------------------------------
 uintll bubbleSort1(Vecteur& v){
    unsigned long cpt = 0;
-   if (v.size() > 0){   // size_t = unsigned => 0 - 1 => BCP
+   if (v.size() > 0){   // size_t = unsigned => 0 - 1
       for (size_t i = 0; i < v.size() - 1; ++i){
          for (size_t j = 1; j < v.size() - i; ++j){
             ++cpt;   // itérations
             if (v[j - 1] > v[j]) {
-               swap(v[j - 1], v[j]); // permutation
+               swap(v[j - 1], v[j]); // permutation
             } // if
          } // for j
       } // for i
