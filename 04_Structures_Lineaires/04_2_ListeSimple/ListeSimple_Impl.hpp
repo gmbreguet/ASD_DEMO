@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Demo           : 04_2_ListeSimple
 // Fichier        : ListeSimple_Impl.hpp
-// Version        : 02 - 2022.05.04
+// Version        : 03 - 2023.04.04
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : Liste dynamique avec exceptions
 // Modifications  : nommages
@@ -33,7 +33,7 @@ std::ostream& operator<< (std::ostream& os, const Liste<T>& liste) {
 // Constructeur
 template <typename T>
 Liste<T>::Liste ()
-:tete(NULL), longueur(0) {}
+:tete(nullptr), longueur(0) {}
  
 //---------------------------------------------------
 // Destructeur

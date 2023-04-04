@@ -38,7 +38,7 @@ struct Noeud {
 };
  
 //---------------------------------------------------
-// coperator <<
+// operator <<
 template <typename T>
 std::ostream& operator<< (std::ostream& os, const Liste<T>& liste);
 
