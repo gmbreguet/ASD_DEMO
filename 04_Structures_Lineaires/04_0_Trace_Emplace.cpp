@@ -43,39 +43,39 @@ int main() {
    {
       cout << "----------------------------------------" << endl;
       cout << "affectation(objet)"                       << endl;
-	   cout << "----------------------------------------" << endl;
+      cout << "----------------------------------------" << endl;
       const size_t TAILLE = 2;
       vector<Trace> v(TAILLE);                     // C0(0) C0(0)
       for (size_t i=0; i<TAILLE; ++i)
          v.at(i) = Trace(i);                       // Ci(0) =C(0) D(0) Ci(1) =C(1) D(1)
-	   cout << endl;
+      cout << endl;
    }                                               // D(1) D(0)
 
-	{
-		cout << endl;
-		cout << "----------------------------------------" << endl;
-		cout << "push_back(objet)"                         << endl;
-		cout << "----------------------------------------" << endl;
-		const size_t TAILLE = 2;
-		vector<Trace> v;                             // pas de construction
-		v.reserve(TAILLE);                           // pas de construction
-		for (size_t i=0; i<TAILLE; ++i)
-			v.push_back(Trace(i));                    // Ci(0) CC(0) D(0) Ci(1) CC(1) D(1)
-		cout << endl;
-	}                                               // D(1) D(0) D(2)
+   {
+      cout << endl;
+      cout << "----------------------------------------" << endl;
+      cout << "push_back(objet)"                         << endl;
+      cout << "----------------------------------------" << endl;
+      const size_t TAILLE = 2;
+      vector<Trace> v;                             // pas de construction
+      v.reserve(TAILLE);                           // pas de construction
+      for (size_t i=0; i<TAILLE; ++i)
+         v.push_back(Trace(i));                    // Ci(0) CC(0) D(0) Ci(1) CC(1) D(1)
+      cout << endl;
+   }                                               // D(1) D(0)
 
-	{
-		cout << endl;
-		cout << "----------------------------------------" << endl;
-		cout << "emplace_back(valeur)"                     << endl;
-		cout << "----------------------------------------" << endl;
-		const size_t TAILLE = 2;
-		vector<Trace> v;                             // pas de construction
-		v.reserve(TAILLE);                           // pas de construction
-		for (size_t i=0; i<TAILLE; ++i)
-			v.emplace_back(i);                        // Ci(0) Ci(1)
-		cout << endl;
-	}                                               // D(1) D(0)
+   {
+      cout << endl;
+      cout << "----------------------------------------" << endl;
+      cout << "emplace_back(valeur)"                     << endl;
+      cout << "----------------------------------------" << endl;
+      const size_t TAILLE = 2;
+      vector<Trace> v;                             // pas de construction
+      v.reserve(TAILLE);                           // pas de construction
+      for (size_t i=0; i<TAILLE; ++i)
+         v.emplace_back(i);                        // Ci(0) Ci(1)
+      cout << endl;
+   }                                               // D(1) D(0)
 
    cout << endl;
    cout << "----------------------------------------" << endl;
@@ -84,23 +84,23 @@ int main() {
    return EXIT_SUCCESS;
 }
 
-//		----------------------------------------
-//		affectation(objet)
-//		----------------------------------------
-//		C0(0) C0(0) Ci(0) =C(0) D(0) Ci(1) =C(1) D(1)
-//		D(1) D(0)
-//		----------------------------------------
-//		push_back(objet)
-//		----------------------------------------
-//		Ci(0) CC(0) D(0) Ci(1) CC(1) D(1)
-//		D(1) D(0)
-//		----------------------------------------
-//		emplace_back(valeur)
-//		----------------------------------------
-//		Ci(0) Ci(1)
-//		D(1) D(0)
-//		----------------------------------------
-//		sortie de main
-//		----------------------------------------
+//      ----------------------------------------
+//      affectation(objet)
+//      ----------------------------------------
+//      C0(0) C0(0) Ci(0) =C(0) D(0) Ci(1) =C(1) D(1)
+//      D(1) D(0)
+//      ----------------------------------------
+//      push_back(objet)
+//      ----------------------------------------
+//      Ci(0) CC(0) D(0) Ci(1) CC(1) D(1)
+//      D(1) D(0)
+//      ----------------------------------------
+//      emplace_back(valeur)
+//      ----------------------------------------
+//      Ci(0) Ci(1)
+//      D(1) D(0)
+//      ----------------------------------------
+//      sortie de main
+//      ----------------------------------------
 
 
