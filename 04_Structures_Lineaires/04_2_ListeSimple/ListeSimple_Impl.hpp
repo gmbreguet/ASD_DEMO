@@ -45,6 +45,7 @@ Liste<T>::~Liste() {
    while (tete) {
       tmp  = tete;
       tete = tete->suivant;
+      destroy_at(tmp);
       delete tmp;
    }
 }
@@ -83,8 +84,16 @@ T* Liste<T>::ptrElement(const T& valeur) const {
 template <typename T>
 void Liste<T>::inserer(const T& valeur) {
    
-   Noeud<T>* nouveau = new Noeud<T> {valeur, tete};
-   tete              = nouveau;
+// Noeud<T>* nouveau = new Noeud<T> {valeur, tete};
+   Noeud<T>* nouveau;
+   try {
+      nouveau = (Noeud<T>*)::operator new(sizeof(Noeud<T>));
+   }
+   catch (std::bad_alloc& ba) {
+      throw liste_pleine("memoire");
+   }
+
+   new(nouveau) Noeud{valeur, tete};
    longueur++;
 }
  

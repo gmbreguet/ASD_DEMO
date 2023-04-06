@@ -25,6 +25,13 @@ public:
 };
 
 //---------------------------------------------------
+class liste_pleine : public std::runtime_error {
+public:
+   explicit liste_pleine(const std::string& s) : std::runtime_error(s) {}
+   explicit liste_pleine(const char*   s)      : std::runtime_error(s) {}
+};
+
+//---------------------------------------------------
 // Déclaration
 template <typename T>
 class Liste;
