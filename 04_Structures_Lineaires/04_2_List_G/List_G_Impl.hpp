@@ -4,7 +4,7 @@
 // Version        : 03 - 2023.04.06
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : List_G with exceptions
-// Modifications  : naming and english version
+// Modifications  :
 // Remarque(s)    : basic methods only
 //---------------------------------------------------------
 
