@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Demo           : 04_2_ListeSimple
 // Fichier        : ListeListeSimple.h
-// Version        : 02 - 2022.05.04
+// Version        : 03 - 2023.04.06
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : Liste dynamique avec exceptions
 // Modifications  : nommages
@@ -56,8 +56,8 @@ class Liste {
    friend std::ostream& operator<< <T>(std::ostream& os, const Liste<T>& liste);
 
 public:
-    Liste();
-   ~Liste();
+   Liste();
+  ~Liste();
 
    T      premier() const;
    bool   estVide() const;

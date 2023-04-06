@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Demo           : 04_2_ListeSimple
 // Fichier        : ListeSimple_Impl.hpp
-// Version        : 03 - 2023.04.04
+// Version        : 03 - 2023.04.06
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : Liste dynamique avec exceptions
 // Modifications  : nommages
@@ -84,16 +84,26 @@ T* Liste<T>::ptrElement(const T& valeur) const {
 template <typename T>
 void Liste<T>::inserer(const T& valeur) {
    
-// Noeud<T>* nouveau = new Noeud<T> {valeur, tete};
-   Noeud<T>* nouveau;
+   // réservation mémoire
+   Noeud<T>* ptrNouveau;
    try {
-      nouveau = (Noeud<T>*)::operator new(sizeof(Noeud<T>));
+      ptrNouveau = (Noeud<T>*)::operator new(sizeof(Noeud<T>));
    }
    catch (std::bad_alloc& ba) {
       throw liste_pleine("memoire");
    }
 
-   new(nouveau) Noeud{valeur, tete};
+   // construction de l'objet en place
+   try {
+      new(ptrNouveau) Noeud<T>{valeur, tete};
+   }
+   catch(...) {
+      delete ptrNouveau;
+      throw;
+   }
+
+   // tout ok, connecter le nouvel élément
+   tete = ptrNouveau;
    longueur++;
 }
  

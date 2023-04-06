@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Demo           : 04_2_ListeSimple
 // Fichier        : main.cpp
-// Version        : 02 - 2022.05.04
+// Version        : 03 - 2023.04.06
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : Liste dynamique avec exceptions
 // Modifications  :
@@ -30,14 +30,13 @@ int main () {
    // Instanciation d'une liste chainée liste
    Liste<string> liste;
     
-   // Insertion de six noeuds dans la liste
-   liste.inserer("Marcel");
-   liste.inserer("Robert");
-   liste.inserer("Sara");
-   liste.inserer("Jean");
-   liste.inserer("Philippe");
-   liste.inserer("Sonia");
-   liste.inserer("Michel");
+   cout << "Insertion de noms dans la liste" << endl;
+   for (const string& nom : {"Marcel", "Robert", "Sara", "Jean", "Philippe", "Sonia", "Michel"} ) {
+      cout << nom << " => liste" << endl;
+      liste.inserer(nom);
+   }
+
+   cout << endl;
    cout << "Liste  : " << liste           << endl;
    cout << "Taille : " << liste.taille()  << endl;
    cout << endl;
@@ -55,12 +54,19 @@ int main () {
    cout << "Taille : " << liste.taille()  << endl;
    cout << endl;
 
+   // Elément en tête
+   cout << "Elément en tête de liste" << endl;
+   cout << liste.premier() << endl;
+   cout << endl;
+
    // Supprimer tous les éléments
    cout << "Supprimer tous les éléments" << endl;
    while (not liste.estVide()) {
       cout << liste.premier() << endl;
       liste.supprimer();
    }
+
+   cout << endl;
    cout << "Liste  : " << liste           << endl;
    cout << "Taille : " << liste.taille()  << endl;
 
@@ -68,6 +74,15 @@ int main () {
    return EXIT_SUCCESS;
 }
 
+//      Insertion de noms dans la liste
+//      Marcel => liste
+//      Robert => liste
+//      Sara => liste
+//      Jean => liste
+//      Philippe => liste
+//      Sonia => liste
+//      Michel => liste
+//
 //      Liste  : (Michel, Sonia, Philippe, Jean, Sara, Robert, Marcel)
 //      Taille : 7
 //
@@ -78,6 +93,9 @@ int main () {
 //      Liste  : (MICHEL, SONIA, PHILIPPE, JEAN, SARA, ROBERT, MARCEL)
 //      Taille : 7
 //
+//      Elément en tête de liste
+//      MICHEL
+//
 //      Supprimer tous les éléments
 //      MICHEL
 //      SONIA
@@ -86,5 +104,9 @@ int main () {
 //      SARA
 //      ROBERT
 //      MARCEL
+//
 //      Liste  : ()
 //      Taille : 0
+
+
+
