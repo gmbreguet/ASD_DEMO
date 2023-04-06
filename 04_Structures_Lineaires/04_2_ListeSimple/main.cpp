@@ -13,7 +13,7 @@
 
 #include <string>
 #include <cctype>    // toupper
-#include "ListeSimple.hpp"
+#include "List_G.hpp"
  
 using namespace std;
 
@@ -28,17 +28,17 @@ string majusculiser(string chaine) {
 //---------------------------------------------------------
 int main () {
    // Instanciation d'une liste chainée liste
-   Liste<string> liste;
+   List_G<string> liste;
     
    cout << "Insertion de noms dans la liste" << endl;
    for (const string& nom : {"Marcel", "Robert", "Sara", "Jean", "Philippe", "Sonia", "Michel"} ) {
       cout << nom << " => liste" << endl;
-      liste.inserer(nom);
+      liste.add(nom);
    }
 
    cout << endl;
    cout << "Liste  : " << liste           << endl;
-   cout << "Taille : " << liste.taille()  << endl;
+   cout << "Taille : " << liste.size()  << endl;
    cout << endl;
 
    cout << "chercher un nom" << endl;
@@ -49,26 +49,26 @@ int main () {
    cout << endl;
 
    cout << "parcourir => majusculier" << endl;
-   liste.parcourir(majusculiser);
+   liste.forEach(majusculiser);
    cout << "Liste  : " << liste           << endl;
-   cout << "Taille : " << liste.taille()  << endl;
+   cout << "Taille : " << liste.size()  << endl;
    cout << endl;
 
    // Elément en tête
    cout << "Elément en tête de liste" << endl;
-   cout << liste.premier() << endl;
+   cout << liste.first() << endl;
    cout << endl;
 
    // Supprimer tous les éléments
    cout << "Supprimer tous les éléments" << endl;
-   while (not liste.estVide()) {
-      cout << liste.premier() << endl;
-      liste.supprimer();
+   while (not liste.isEmpty()) {
+      cout << liste.first() << endl;
+      liste.remove();
    }
 
    cout << endl;
    cout << "Liste  : " << liste           << endl;
-   cout << "Taille : " << liste.taille()  << endl;
+   cout << "Taille : " << liste.size()    << endl;
 
    cout << endl;
    return EXIT_SUCCESS;
