@@ -127,4 +127,4 @@ void List_G<T>::forEach(Fonction fonction) {
    }
 }
 
-#endif /* List_G_SIMPLE_IMPL_HPP */
+#endif /* List_G_IMPL_HPP */

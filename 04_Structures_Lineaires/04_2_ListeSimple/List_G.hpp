@@ -78,5 +78,5 @@ private:
 
 #include "List_G_Impl.hpp"
 
-#endif /* list_SIMPLE_HPP */
+#endif /* list_G_HPP */
 
