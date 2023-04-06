@@ -102,7 +102,7 @@ void Liste<T>::inserer(const T& valeur) {
       throw;
    }
 
-   // tout ok, connecter le nouvel élément
+   // tout ok, connecter le nouvel élément à tête
    tete = ptrNouveau;
    longueur++;
 }
