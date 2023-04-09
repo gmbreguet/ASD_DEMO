@@ -5,6 +5,4 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(_CLion
         ../ASD_DEMO/04_Structures_Lineaires/04_2_ListeSimple/main.cpp
-        ../ASD_DEMO/04_Structures_Lineaires/04_2_ListeSimple/ListeSimple.hpp
-        ../ASD_DEMO/04_Structures_Lineaires/04_2_ListeSimple/ListeSimple_Impl.hpp
 )
