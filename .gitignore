@@ -1,12 +1,13 @@
 # .DS_Store (GMB)
 .DS_Store
 
-# move files (GMB)
-*.mp4
+# movie files (GMB)
+#*.mp4
 .cmproj
 
-#xcode project files (GMB)
-cmake-build-debug/*
+# CLion project files
+.idea
+cmake-build-*
 
 # Prerequisites
 *.d
