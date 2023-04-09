@@ -52,7 +52,7 @@ int main () {
    cout << endl;
 
    cout << "forEach => value + 1"                     << endl;
-   listInt.forEach(PlusN<int>(3));
+   listInt.forEach(PlusN<int>(1));
    cout << "listString     : " << listInt             << endl;
    cout << "Size           : " << listInt.size()      << endl;
    cout << endl;
