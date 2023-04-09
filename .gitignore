@@ -5,8 +5,9 @@
 *.mp4
 .cmproj
 
-#xcode project files (GMB)
+#C++ project (GMB)
 cmake-build-debug/*
+.idea/*
 
 # Prerequisites
 *.d
