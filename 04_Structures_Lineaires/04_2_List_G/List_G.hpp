@@ -59,11 +59,11 @@ public:
 
    void     addFirst(const T& value);
    void     removeFirst();
-   void     clear();
+   void     clear() noexcept;
 
    T        first()    const;
-   bool     isEmpty()  const;
-   size_t   size()     const;
+   bool     isEmpty()  const noexcept;
+   size_t   size()     const noexcept;
 
    T*       ptrElement(const T& value) const;
 
