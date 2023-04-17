@@ -82,8 +82,8 @@ public:
    using TabIterateur       = Iterateur<T>;
    using TabIterateur_Const = Iterateur<const T>;
    
-   TabIterateur       begin()         { return TabIterateur(data); }
-   TabIterateur       end()           { return TabIterateur(data + taille); }
+   TabIterateur       begin()         { return TabIterateur(T*)(data); }
+   TabIterateur       end()           { return TabIterateur(T*)(data + taille); }
 
    TabIterateur_Const cbegin() const  { return TabIterateur_Const( (const T*)(data) ); }
    TabIterateur_Const cend()   const  { return TabIterateur_Const( (const T*)(data + taille) ); }
