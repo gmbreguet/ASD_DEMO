@@ -85,7 +85,7 @@ void List_G<T>::removeFirst() {
 
 //---------------------------------------------------
 template <typename T>
-void List_G<T>::clear() {
+void List_G<T>::clear() noexcept {
    while(not this->isEmpty())
       removeFirst();
    this->nElement = 0;
@@ -103,7 +103,7 @@ List_G<T>::~List_G() {
 
 //---------------------------------------------------
 template <typename T>
-T List_G<T>::first() const{
+T List_G<T>::first() const {
    if (this->nElement == 0)
       throw ListIsEmpty("List is empty");
     return head->data;
@@ -111,13 +111,13 @@ T List_G<T>::first() const{
 
 //---------------------------------------------------
 template <typename T>
-bool List_G<T>::isEmpty() const{
+bool List_G<T>::isEmpty() const noexcept {
     return nElement == 0;
 }
 
 //---------------------------------------------------
 template <typename T>
-size_t List_G<T>::size() const{
+size_t List_G<T>::size() const noexcept {
     return nElement;
 }
 
