@@ -109,6 +109,8 @@ int main() {
    cout << "tab1.at(0)  = 9";    tab1.at(0) = 9; cout << endl;
    cout << "tab1.at(0)  : "      << tab1.at(0)        << endl;
    cout << "tab1        : "      << tab1              << endl;
+
+   cout << "tab1.at(3)  => exception"                 << endl;
    cout << "tab1.at(3)  = "      << tab1.at(3)        << endl;
    cout << endl;
  
