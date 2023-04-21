@@ -2,12 +2,12 @@
 // Fichier        : 04_3_Iterateur_Invalide.cpp
 // Version        : 01 - 2022-05-10
 // Auteur(s)      : BREGUET Guy-Michel
-// But            : démontrer la porblématique des itérateurs invalides
+// But            : démontrer la problématique des itérateurs invalides
 // Modifications  :
 // Remarque(s)    :
 //---------------------------------------------------------
 #include <iostream>
-#include <cstdlib>
+#include <cstdlib>   // EXIT_SUCCESS
 #include <vector>
 
 //---------------------------------------------------------
