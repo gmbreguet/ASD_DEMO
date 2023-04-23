@@ -8,6 +8,7 @@
 # CLion project files
 .idea
 cmake-build-*
+build
 
 # Prerequisites
 *.d
