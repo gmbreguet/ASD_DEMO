@@ -7,8 +7,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wconversion -Wall -Wextra -pedantic -st
 add_executable(04_Structures_Lineaires
         04_1_Trace_vector.cpp)
 
-
 set_target_properties(
         ${PROJECT_NAME}
         PROPERTIES OUTPUT_NAME ../APP.app
 )
+
