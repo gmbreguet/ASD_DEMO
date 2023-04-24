@@ -8,8 +8,8 @@ add_executable(04_Structures_Lineaires
         Tableau.hpp
         Tab_Iterateur.hpp "main.cpp")
 
-#set_target_properties(
-#        ${PROJECT_NAME}
-#        PROPERTIES OUTPUT_NAME ../APP.app
-#        )
+set_target_properties(
+        ${PROJECT_NAME}
+        PROPERTIES OUTPUT_NAME ../APP.out
+        )
 
