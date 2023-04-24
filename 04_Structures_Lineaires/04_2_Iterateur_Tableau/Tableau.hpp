@@ -89,7 +89,7 @@ std::ostream& operator<< (std::ostream& os, const Tableau<T>& tab) {
 //---------------------------------------------------------
 template <typename T>
 Tableau<T>::Tableau() noexcept : taille(0), data(nullptr)
-{};
+{}
 
 //---------------------------------------------------------
 template <typename T>
