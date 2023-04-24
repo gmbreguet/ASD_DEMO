@@ -12,3 +12,4 @@ set_target_properties(
         ${PROJECT_NAME}
         PROPERTIES OUTPUT_NAME ../APP.app
 )
+

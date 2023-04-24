@@ -18,7 +18,7 @@ using namespace std;
 //    Iterateur
 //---------------------------------------------------------
 template <typename T>
-class Iterateur {
+class Iterateur : public std::iterator<std::random_access_iterator_tag, T> {
 public:
    // constructeurs et destructeur
    Iterateur(const Iterateur<T>& it)                           = default;
@@ -79,14 +79,14 @@ class Tableau {
 
 public:
    //------------------------------------------------------
-   using TabIterateur       = Iterateur<T>;
-   using TabIterateur_Const = Iterateur<const T>;
+   using iterator       = Iterateur<T>;
+   using const_iterator = Iterateur<const T>;
    
-   TabIterateur       begin()         { return TabIterateur( (T*)(data)          ); }
-   TabIterateur       end()           { return TabIterateur( (T*)(data + taille) ); }
+   iterator       begin()         { return iterator( (T*)(data)          ); }
+   iterator       end()           { return iterator( (T*)(data + taille) ); }
 
-   TabIterateur_Const cbegin() const  { return TabIterateur_Const( (const T*)(data)          ); }
-   TabIterateur_Const cend()   const  { return TabIterateur_Const( (const T*)(data + taille) ); }
+   const_iterator cbegin() const  { return const_iterator( (const T*)(data)          ); }
+   const_iterator cend()   const  { return const_iterator( (const T*)(data + taille) ); }
 
    //------------------------------------------------------
    Tableau() noexcept : taille(0), data(nullptr) {};
@@ -146,8 +146,9 @@ int main() {
    init(tab, 1);
    cout << tab << endl;    // operateur de flux avec itérateurs constants
    
-   Tableau<int>::TabIterateur it = tab.begin();
+   Tableau<int>::iterator it = tab.begin();
    cout << "*it   : " << *it     << endl;
+   ++it;
    ++it;
    cout << "*it   : " << *it     << endl;
    it++;
