@@ -13,12 +13,13 @@
 
 //---------------------------------------------------------
 using namespace std;
+#include <iterator>     // std::iterator, std::input_iterator_tag
 
 //---------------------------------------------------------
 //    Iterateur
 //---------------------------------------------------------
 template <typename T>
-class Iterateur {
+class Iterateur : public std::iterator<std::random_access_iterator_tag, T> {
 public:
    // constructeurs et destructeur
    Iterateur(const Iterateur<T>& it)                           = default;
