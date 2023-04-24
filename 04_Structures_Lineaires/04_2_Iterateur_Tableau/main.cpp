@@ -85,4 +85,69 @@ int main() {
    return EXIT_SUCCESS;
 }
 
-
+//      ----------------------------------------
+//      constructeurs et affectation
+//      ----------------------------------------
+//      Tableau<int> tab0
+//      adresse : 0x16d083578
+//      taille  : 0
+//      data    : 0x0
+//      contenu : []
+//
+//      Tableau<int> tab1(3)
+//      adresse : 0x16d083540
+//      taille  : 3
+//      data    : 0x600001264040
+//      contenu : [0, 0, 0]
+//
+//      Tableau<int> tab2(tab1)
+//      adresse : 0x16d083518
+//      taille  : 3
+//      data    : 0x600001264050
+//      contenu : [0, 0, 0]
+//
+//      tab0 = tab2
+//      adresse : 0x16d083578
+//      taille  : 3
+//      data    : 0x600001264060
+//      contenu : [0, 0, 0]
+//
+//      ----------------------------------------
+//      swap
+//      ----------------------------------------
+//      tab0 : tab0.swap(tab1)
+//      adresse : 0x16d083578
+//      taille  : 3
+//      data    : 0x600001264040
+//      contenu : [0, 0, 0]
+//
+//      tab1 :
+//      adresse : 0x16d083540
+//      taille  : 3
+//      data    : 0x600001264060
+//      contenu : [0, 0, 0]
+//
+//      ----------------------------------------
+//      lectures et affectations .at
+//      ----------------------------------------
+//      tab1.at(0)  : 0
+//      tab1.at(0)  = 9
+//      tab1.at(0)  : 9
+//      tab1        : adresse : 0x16d083540
+//      taille  : 3
+//      data    : 0x600001264060
+//      contenu : [9, 0, 0]
+//      tab1.at(3)  => exception
+//
+//      ----------------------------------------
+//      iterateurs
+//      ----------------------------------------
+//      adresse : 0x16d0834a8
+//      taille  : 10
+//      data    : 0x600001e60210
+//      contenu : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+//      *it   : 1
+//      *it   : 3
+//      *it   : 4
+//      *it+2 : 6
+//

@@ -37,16 +37,6 @@ class Tableau {
    friend void swap <T>(Tableau<T>& lhs, Tableau<T>& rhs);    // pas obligatoire
 
 public:
-   using iterator       = Iterateur<T>;
-   using const_iterator = Iterateur<const T>;
-   
-   iterator       begin();
-   iterator       end();
-
-   const_iterator cbegin() const;
-   const_iterator cend()   const;
-
-   //------------------------------------------------------
    Tableau() noexcept;
    Tableau(size_t n);
    Tableau(const Tableau&);
@@ -59,6 +49,16 @@ public:
    const T& at(size_t i) const;
 
    void swap(Tableau& other);
+
+   //------------------------------------------------------
+   using iterator       = Iterateur<T>;
+   using const_iterator = Iterateur<const T>;
+
+   iterator       begin();
+   iterator       end();
+
+   const_iterator cbegin() const;
+   const_iterator cend()   const;
 
 private:
    size_t   taille;
@@ -82,32 +82,6 @@ std::ostream& operator<< (std::ostream& os, const Tableau<T>& tab) {
    }
    os << "]";
    return os;
-}
-
-//---------------------------------------------------------
-//    iterators
-//---------------------------------------------------------
-template <typename T>
-typename Tableau<T>::iterator Tableau<T>::begin() {
-   return iterator( (T*)(data));
-}
-
-//---------------------------------------------------------
-template <typename T>
-typename Tableau<T>::iterator Tableau<T>::end() {
-   return iterator( (T*)(data + taille) );
-}
-
-//---------------------------------------------------------
-template <typename T>
-typename Tableau<T>::const_iterator Tableau<T>::cbegin() const  {
-   return const_iterator( (const T*)(data) );
-}
-
-//---------------------------------------------------------
-template <typename T>
-typename Tableau<T>::const_iterator Tableau<T>::cend() const {
-   return const_iterator( (const T*)(data + taille) );
 }
 
 //---------------------------------------------------------
@@ -181,4 +155,31 @@ void Tableau<T>::swap(Tableau<T>& other) {
    std::swap(taille, other.taille);
    std::swap(data,   other.data);
 }
+
+//---------------------------------------------------------
+//    iterators
+//---------------------------------------------------------
+template <typename T>
+typename Tableau<T>::iterator Tableau<T>::begin() {
+   return iterator( (T*)(data));
+}
+
+//---------------------------------------------------------
+template <typename T>
+typename Tableau<T>::iterator Tableau<T>::end() {
+   return iterator( (T*)(data + taille) );
+}
+
+//---------------------------------------------------------
+template <typename T>
+typename Tableau<T>::const_iterator Tableau<T>::cbegin() const  {
+   return const_iterator( (const T*)(data) );
+}
+
+//---------------------------------------------------------
+template <typename T>
+typename Tableau<T>::const_iterator Tableau<T>::cend() const {
+   return const_iterator( (const T*)(data + taille) );
+}
+
 #endif
