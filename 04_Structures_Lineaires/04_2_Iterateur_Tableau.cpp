@@ -1,14 +1,15 @@
 //---------------------------------------------------------
 // Fichier        : 04_2_Iterateur_Tableau.cpp
-// Version        : 02 - 2022-05-05
+// Version        : 03 - 2023-04-24
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : démontrer une classe Tableau avec iterateurs
-// Modifications  : ajouté oépérateurs de comparaison
-// Remarque(s)    :
-// https://stackoverflow.com/questions/3582608/how-to-correctly-implement-custom-iterators-and-const-iterators
+// Modifications  :
+// Remarque(s)    : https://cplusplus.com/reference/iterator/iterator/
+//                : /!\ les tags sont dépréciés
 //---------------------------------------------------------
 #include <iostream>
 #include <cstdlib>
+#include <iterator>     // std::iterator, std::input_iterator_tag
 
 //---------------------------------------------------------
 using namespace std;
@@ -16,12 +17,8 @@ using namespace std;
 //---------------------------------------------------------
 //    Iterateur
 //---------------------------------------------------------
-using difference_type = std::ptrdiff_t;
-
 template <typename T>
 class Iterateur {
-private:
-   T*          ptr;
 public:
    // constructeurs et destructeur
    Iterateur(const Iterateur<T>& it)                           = default;
@@ -38,8 +35,8 @@ public:
    Iterateur<T>  operator++ (int)                              { auto tmp(*this); ++ptr; return tmp; }
    Iterateur<T>  operator-- (int)                              { auto tmp(*this); --ptr; return tmp; }
 
-   Iterateur<T>  operator+  (const difference_type mvt) const  { ptr += mvt; return *this; }
-   Iterateur<T>  operator-  (const difference_type mvt) const  { ptr -= mvt; return *this; }
+   Iterateur<T>  operator+  (const std::ptrdiff_t mvt) const   { ptr += mvt; return *this; }
+   Iterateur<T>  operator-  (const std::ptrdiff_t mvt) const   { ptr -= mvt; return *this; }
    
          T& operator* ()                                       { return *ptr; }
    const T& operator* () const                                 { return *ptr; }
@@ -50,6 +47,9 @@ public:
    bool operator>  (const Iterateur& rhs) const                { return       rhs < *this;    }
    bool operator<= (const Iterateur& rhs) const                { return not(*this > rhs);     }
    bool operator>= (const Iterateur& rhs) const                { return not(*this < rhs);     }
+
+private:
+   T* ptr;
 };
 
 //---------------------------------------------------------
@@ -82,10 +82,10 @@ public:
    using TabIterateur       = Iterateur<T>;
    using TabIterateur_Const = Iterateur<const T>;
    
-   TabIterateur       begin()         { return TabIterateur(T*)(data); }
-   TabIterateur       end()           { return TabIterateur(T*)(data + taille); }
+   TabIterateur       begin()         { return TabIterateur( (T*)(data)          ); }
+   TabIterateur       end()           { return TabIterateur( (T*)(data + taille) ); }
 
-   TabIterateur_Const cbegin() const  { return TabIterateur_Const( (const T*)(data) ); }
+   TabIterateur_Const cbegin() const  { return TabIterateur_Const( (const T*)(data)          ); }
    TabIterateur_Const cend()   const  { return TabIterateur_Const( (const T*)(data + taille) ); }
 
    //------------------------------------------------------
