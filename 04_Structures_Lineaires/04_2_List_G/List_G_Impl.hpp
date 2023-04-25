@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Demo           : 04_2_List_G
 // Fichier        : List_G_Impl.hpp
-// Version        : 03 - 2023.04.06
+// Version        : 04 - 2023.04.25
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : List_G with exceptions
 // Modifications  :
@@ -73,6 +73,9 @@ void List_G<T>::push_front(const T& value) {
 //---------------------------------------------------
 template <typename T>
 void List_G<T>::pop_front() {
+   if (empty())
+      throw ListIsEmpty("List is empty");
+
    Cell<T>* tmp   = head;
    head           = head->next;
    delete tmp;
@@ -90,11 +93,7 @@ void List_G<T>::clear() noexcept {
 //---------------------------------------------------
 template <typename T>
 List_G<T>::~List_G() {
-   while (head) {
-      Cell<T>* tmp = head;
-      head = head->next;
-      delete tmp;
-   }
+   clear();
 }
 
 //---------------------------------------------------
