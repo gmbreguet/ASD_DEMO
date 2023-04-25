@@ -58,7 +58,7 @@ public:
   ~List_G();
 
    void     push_front(const T& value);
-   void     pop_front() noexcept;
+   void     pop_front();
    void     clear()     noexcept;
 
    T        front()     const;

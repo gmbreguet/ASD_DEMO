@@ -66,13 +66,13 @@ List_G<T>::List_G ()
 template <typename T>
 void List_G<T>::push_front(const T& value) {
    Cell<T>* ptrNew = createCell(value, head);
-   head = ptrNew;
+   head            = ptrNew;
    nElement++;
 }
 
 //---------------------------------------------------
 template <typename T>
-void List_G<T>::pop_front() noexcept {
+void List_G<T>::pop_front() {
    if (empty())
       throw ListIsEmpty("List is empty");
 
