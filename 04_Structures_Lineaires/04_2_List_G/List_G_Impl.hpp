@@ -72,7 +72,7 @@ void List_G<T>::push_front(const T& value) {
 
 //---------------------------------------------------
 template <typename T>
-void List_G<T>::pop_front() {
+void List_G<T>::pop_front() noexcept {
    if (empty())
       throw ListIsEmpty("List is empty");
 

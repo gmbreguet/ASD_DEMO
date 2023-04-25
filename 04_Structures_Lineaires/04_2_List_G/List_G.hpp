@@ -21,14 +21,14 @@
 class ListIsEmpty : public std::runtime_error {
 public:
    explicit ListIsEmpty(const std::string& s) : std::runtime_error(s) {}
-   explicit ListIsEmpty(const char*   s)      : std::runtime_error(s) {}
+   explicit ListIsEmpty(const char*        s) : std::runtime_error(s) {}
 };
 
 //---------------------------------------------------
 class ListMemFull : public std::runtime_error {
 public:
    explicit ListMemFull(const std::string& s) : std::runtime_error(s) {}
-   explicit ListMemFull(const char*   s)      : std::runtime_error(s) {}
+   explicit ListMemFull(const char*        s) : std::runtime_error(s) {}
 };
 
 //---------------------------------------------------
@@ -58,12 +58,12 @@ public:
   ~List_G();
 
    void     push_front(const T& value);
-   void     pop_front();
-   void     clear() noexcept;
+   void     pop_front() noexcept;
+   void     clear()     noexcept;
 
-   T        front()    const;
-   bool     empty()  const noexcept;
-   size_t   size()     const noexcept;
+   T        front()     const;
+   bool     empty()     const noexcept;
+   size_t   size()      const noexcept;
 
    T*       ptrElement(const T& value) const;
 
@@ -72,8 +72,7 @@ public:
 
 private:
    Cell<T>*    createCell(const T& value = T(),
-                          Cell<T>* next = nullptr);
-
+                          Cell<T>* next  = nullptr);
    Cell<T>*    head;
    size_t      nElement;
 };
