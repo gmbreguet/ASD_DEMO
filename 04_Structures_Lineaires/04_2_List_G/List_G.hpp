@@ -57,12 +57,12 @@ public:
    List_G();
   ~List_G();
 
-   void     addFirst(const T& value);
-   void     removeFirst();
+   void     push_front(const T& value);
+   void     pop_front();
    void     clear() noexcept;
 
-   T        first()    const;
-   bool     isEmpty()  const noexcept;
+   T        front()    const;
+   bool     empty()  const noexcept;
    size_t   size()     const noexcept;
 
    T*       ptrElement(const T& value) const;

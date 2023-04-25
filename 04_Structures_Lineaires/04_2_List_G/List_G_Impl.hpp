@@ -64,19 +64,15 @@ List_G<T>::List_G ()
 
 //---------------------------------------------------
 template <typename T>
-void List_G<T>::addFirst(const T& value) {
-
-   // create the new cell
+void List_G<T>::push_front(const T& value) {
    Cell<T>* ptrNew = createCell(value, head);
-
-   // connect the new element
    head = ptrNew;
    nElement++;
 }
 
 //---------------------------------------------------
 template <typename T>
-void List_G<T>::removeFirst() {
+void List_G<T>::pop_front() {
    Cell<T>* tmp   = head;
    head           = head->next;
    delete tmp;
@@ -86,8 +82,8 @@ void List_G<T>::removeFirst() {
 //---------------------------------------------------
 template <typename T>
 void List_G<T>::clear() noexcept {
-   while(not this->isEmpty())
-      removeFirst();
+   while(not this->empty())
+      pop_front();
    this->nElement = 0;
 }
 
@@ -103,7 +99,7 @@ List_G<T>::~List_G() {
 
 //---------------------------------------------------
 template <typename T>
-T List_G<T>::first() const {
+T List_G<T>::front() const {
    if (this->nElement == 0)
       throw ListIsEmpty("List is empty");
     return head->data;
@@ -111,7 +107,7 @@ T List_G<T>::first() const {
 
 //---------------------------------------------------
 template <typename T>
-bool List_G<T>::isEmpty() const noexcept {
+bool List_G<T>::empty() const noexcept {
     return nElement == 0;
 }
 

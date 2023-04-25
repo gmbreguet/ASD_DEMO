@@ -35,7 +35,7 @@ int main () {
    cout << "Insert value   : "                        << endl;
    for (int i : {1, 2, 3, 4, 5} ) {
       cout << i << " ";
-      listInt.addFirst(i);
+      listInt.push_front(i);
    }
 
    cout << endl;
@@ -58,21 +58,20 @@ int main () {
    cout << endl;
 
    // First cell
-   cout << "First cell     : " << listInt.first()     << endl;
+   cout << "listInt.front(): " << listInt.front() << endl;
 
    cout << endl;
 
    // remove each cell
    cout << "Remove all     : ";
-   while (not listInt.isEmpty()) {
-      cout << listInt.first() << " ";
-      listInt.removeFirst();
+   while (not listInt.empty()) {
+      cout << listInt.front() << " ";
+      listInt.pop_front();
    }
 
    cout << endl;
    cout << "listInt        : " << listInt             << endl;
    cout << "size           : " << listInt.size()      << endl;
-
 
    cout << endl;
    return EXIT_SUCCESS;
@@ -89,7 +88,7 @@ int main () {
 //      listString     : [ 6 (0x6000004e4080), 5 (0x6000004e4070), 4 (0x6000004e4060), 3 (0x6000004e4050), 2 (0x6000004e4040) ]
 //      Size           : 5
 //
-//      First cell     : 6
+//      listInt.front(): 6
 //
 //      Remove all     : 6 5 4 3 2
 //      listInt        : [  ]
