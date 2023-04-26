@@ -74,7 +74,7 @@ public:
    T*       find(const T& value) const;
 
    template<typename Fonction>
-   void forEach(Fonction fonction);
+   void for_each(Fonction fonction);
 
 private:
    Cell<T>*    createCell(const T& value = T(),

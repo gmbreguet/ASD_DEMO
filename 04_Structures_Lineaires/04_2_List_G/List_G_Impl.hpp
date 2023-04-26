@@ -135,7 +135,7 @@ T* List_G<T>::find(const T& value) const {
 //---------------------------------------------------
 template <typename T>
 template <typename Fonction>
-void List_G<T>::forEach(Fonction fonction) {
+void List_G<T>::for_each(Fonction fonction) {
    Cell<T>* crt = head;
    while (crt) {
       crt->data = fonction(crt->data);

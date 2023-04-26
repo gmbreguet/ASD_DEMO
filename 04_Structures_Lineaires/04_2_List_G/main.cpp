@@ -60,7 +60,7 @@ int main () {
    cout << "----------------------------------------" << endl;
    cout << "forEach => value + 1"                     << endl;
    cout << "----------------------------------------" << endl;
-   listInt.forEach(PlusN<int>(1));
+   listInt.for_each(PlusN<int>(1));
    cout << listInt                                    << endl;
    cout << endl;
 
