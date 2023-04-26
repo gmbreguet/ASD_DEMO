@@ -1,9 +1,9 @@
 //---------------------------------------------------------
 // Demo           : 04_2_List_G
 // Fichier        : List_G_Impl.hpp
-// Version        : 04 - 2023.04.25
+// Version        : 04 - 2023.04.26
 // Auteur(s)      : BREGUET Guy-Michel
-// But            : List_G with exceptions
+// But            : forward list
 // Modifications  :
 // Remarque(s)    : basic methods only
 //---------------------------------------------------------

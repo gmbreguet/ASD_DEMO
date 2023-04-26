@@ -1,10 +1,10 @@
 //---------------------------------------------------------
 // Demo           : 04_2_List_G
 // Fichier        : List_G.hpp
-// Version        : 03 - 2023.04.06
+// Version        : 04 - 2023.04.26
 // Auteur(s)      : BREGUET Guy-Michel
-// But            : List_G with exceptions
-// Modifications  : naming and english version
+// But            : forward list
+// Modifications  :
 // Remarque(s)    : basic methods only
 //---------------------------------------------------------
 
