@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Fichier        : 04_3_List.cpp
+// Fichier        : 04_3_std_List.cpp
 // Version        : 01 - 2022-05-10
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : exemples de code avec std::list
