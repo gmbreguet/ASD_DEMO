@@ -10,9 +10,6 @@
 
 #include <cstdlib>
 #include <iostream>
-
-#include <string>
-#include <cctype>    // toupper
 #include "List_G.hpp"
  
 using namespace std;
@@ -29,71 +26,86 @@ private:
 
 //---------------------------------------------------------
 int main () {
-   // Create an empty list
+   cout << "----------------------------------------" << endl;
+   cout << "List_G<int> listInt"                      << endl;
+   cout << "----------------------------------------" << endl;
    List_G<int> listInt;
-    
-   cout << "Insert value   : "                        << endl;
+   cout << listInt                                    << endl;
+   cout << endl;
+
+   cout << "----------------------------------------" << endl;
+   cout << "listInt.push_front(i) <= {1, 2, 3, 4, 5}" << endl;
+   cout << "----------------------------------------" << endl;
    for (int i : {1, 2, 3, 4, 5} ) {
-      cout << i << " ";
       listInt.push_front(i);
    }
-
-   cout << endl;
-   cout << "listInt        : " << listInt             << endl;
-   cout << "size           : " << listInt.size()      << endl;
+   cout << listInt                                    << endl;
    cout << endl;
 
-   cout << "search for a value" << endl;
-   if (int* ptrInt = listInt.ptrElement(4))
-      cout << "ptrInt->       : "
-           << *ptrInt << " (" << ptrInt << ")"        << endl;
+   cout << "----------------------------------------" << endl;
+   cout << "listInt.front()"                          << endl;
+   cout << "----------------------------------------" << endl;
+   cout << "front   : " << listInt.front()            << endl;
+   cout << endl;
+
+   cout << "----------------------------------------" << endl;
+   cout << "listInt.find(4)"                          << endl;
+   cout << "----------------------------------------" << endl;
+   if (int* ptrInt = listInt.find(4))
+      cout << "ptrInt->: " << ptrInt                  << endl;
    else
-      cout << "ptrNom->       : NOT FOUND"            << endl;
+      cout << "ptrNom-> : NOT FOUND"                  << endl;
    cout << endl;
 
+   cout << "----------------------------------------" << endl;
    cout << "forEach => value + 1"                     << endl;
+   cout << "----------------------------------------" << endl;
    listInt.forEach(PlusN<int>(1));
-   cout << "listString     : " << listInt             << endl;
-   cout << "Size           : " << listInt.size()      << endl;
+   cout << listInt                                    << endl;
    cout << endl;
 
-   // First cell
-   cout << "listInt.front(): " << listInt.front() << endl;
-
+   cout << "----------------------------------------" << endl;
+   cout << "clear"                                    << endl;
+   cout << "----------------------------------------" << endl;
+   listInt.clear();
+   cout << listInt                                    << endl;
    cout << endl;
 
-   // remove each cell
-   cout << "Remove all     : ";
-   while (not listInt.empty()) {
-      cout << listInt.front() << " ";
-      listInt.pop_front();
-   }
-
-   cout << endl;
-   cout << "listInt        : " << listInt             << endl;
-   cout << "size           : " << listInt.size()      << endl;
-
-   cout << endl;
    return EXIT_SUCCESS;
 }
 
-//      Insert value   : 1 2 3 4 5
-//      listInt        : [ 5 (0x6000004e4080), 4 (0x6000004e4070), 3 (0x6000004e4060), 2 (0x6000004e4050), 1 (0x6000004e4040) ]
-//      size           : 5
 //
-//      search for a value
-//      ptrInt->       : 4 (0x6000004e4070)
+//      ----------------------------------------
+//      List_G<int> listInt
+//      ----------------------------------------
+//      size    : 0
+//      content : []
 //
+//      ----------------------------------------
+//      listInt.push_front(i) <= {1, 2, 3, 4, 5}
+//      ----------------------------------------
+//      size    : 5
+//      content : [5 (0x6000013c0080), 4 (0x6000013c0070), 3 (0x6000013c0060), 2 (0x6000013c0050), 1 (0x6000013c0040)]
+//
+//      ----------------------------------------
+//      listInt.front()
+//      ----------------------------------------
+//      front   : 5
+//
+//      ----------------------------------------
+//      listInt.find(4)
+//      ----------------------------------------
+//      ptrInt->: 4 (0x6000013c0070)
+//
+//      ----------------------------------------
 //      forEach => value + 1
-//      listString     : [ 6 (0x6000004e4080), 5 (0x6000004e4070), 4 (0x6000004e4060), 3 (0x6000004e4050), 2 (0x6000004e4040) ]
-//      Size           : 5
+//      ----------------------------------------
+//      size    : 5
+//      content : [6 (0x6000013c0080), 5 (0x6000013c0070), 4 (0x6000013c0060), 3 (0x6000013c0050), 2 (0x6000013c0040)]
 //
-//      listInt.front(): 6
+//      ----------------------------------------
+//      clear
+//      ----------------------------------------
+//      size    : 0
+//      content : []
 //
-//      Remove all     : 6 5 4 3 2
-//      listInt        : [  ]
-//      size           : 0
-
-
-
-

@@ -48,10 +48,16 @@ template <typename T>
 std::ostream& operator<< (std::ostream& os, const List_G<T>& list);
 
 //---------------------------------------------------
+// operator <<
+template <typename T>
+std::ostream& operator<< (std::ostream& os, const Cell<T>& cell);
+
+//---------------------------------------------------
 // class List
 template <typename T>
 class List_G {
    friend std::ostream& operator<< <T>(std::ostream& os, const List_G<T>& list);
+   friend std::ostream& operator<< <T>(std::ostream& os, const Cell<T>&   cell);
 
 public:
    List_G();
@@ -65,7 +71,7 @@ public:
    bool     empty()     const noexcept;
    size_t   size()      const noexcept;
 
-   T*       ptrElement(const T& value) const;
+   T*       find(const T& value) const;
 
    template<typename Fonction>
    void forEach(Fonction fonction);

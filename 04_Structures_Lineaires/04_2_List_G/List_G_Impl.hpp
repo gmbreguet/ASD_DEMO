@@ -16,17 +16,24 @@
 // friend
 //---------------------------------------------------
 template <typename T>
-std::ostream& operator<< (std::ostream& os, const List_G<T>& List_G) {
-   os << "[ ";
-   const Cell<T>* crt = List_G.head;
-   while (crt != nullptr){
-      if (crt != List_G.head)
+std::ostream& operator<< (std::ostream& os, const List_G<T>& list) {
+   os << "size    : " << list.size()   << std::endl;
+   os << "content : [";
+   const Cell<T>* ptrCell = list.head;
+   while (ptrCell != nullptr){
+      if (ptrCell != list.head)
          os << ", ";
-      os << crt->data << " (" << &(crt->data) << ")";
-      crt = crt->next;
+      os << *ptrCell;
+      ptrCell = ptrCell->next;
    }
-   os << " ]";
+   os << "]";
    return os;
+}
+
+//---------------------------------------------------
+template <typename T>
+std::ostream& operator<< (std::ostream& os, const Cell<T>& cell) {
+   return os << &cell << " => " << cell.data;
 }
 
 //---------------------------------------------------
@@ -75,7 +82,6 @@ template <typename T>
 void List_G<T>::pop_front() {
    if (empty())
       throw ListIsEmpty("List is empty");
-
    Cell<T>* tmp   = head;
    head           = head->next;
    delete tmp;
@@ -118,7 +124,7 @@ size_t List_G<T>::size() const noexcept {
 
 //---------------------------------------------------
 template <typename T>
-T* List_G<T>::ptrElement(const T& value) const {
+T* List_G<T>::find(const T& value) const {
    Cell<T>* crt = head;
    while (crt and value != crt->data) {
       crt = crt->next;
