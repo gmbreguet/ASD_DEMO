@@ -91,9 +91,8 @@ void List_G<T>::pop_front() {
 //---------------------------------------------------
 template <typename T>
 void List_G<T>::clear() noexcept {
-   while(not this->empty())
+   while(not empty())
       pop_front();
-   this->nElement = 0;
 }
 
 //---------------------------------------------------
