@@ -84,6 +84,7 @@ void List_G<T>::pop_front() {
       throw ListIsEmpty("List is empty");
    Cell<T>* tmp   = head;
    head           = head->next;
+   std::destroy_at(tmp);
    delete tmp;
    nElement--;
 }
