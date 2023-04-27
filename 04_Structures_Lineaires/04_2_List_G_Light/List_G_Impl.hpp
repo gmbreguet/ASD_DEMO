@@ -104,7 +104,7 @@ List_G<T>::~List_G() {
 //---------------------------------------------------
 template <typename T>
 T List_G<T>::front() const {
-   if (this->nElement == 0)
+   if (nElement == 0)
       throw ListIsEmpty("List is empty");
     return head->data;
 }
