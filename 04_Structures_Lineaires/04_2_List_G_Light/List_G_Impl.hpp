@@ -85,7 +85,7 @@ void List_G<T>::pop_front() {
    Cell<T>* tmp   = head;
    head           = head->next;
    std::destroy_at(tmp);
-   delete tmp;
+   operator delete(tmp);
    nElement--;
 }
 
