@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Demo           : 04_2_List_G
-// Fichier        : List_G_Impl.hpp
+// Fichier        : ForwardList_Impl.hpp
 // Version        : 04 - 2023.04.26
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : forward list
@@ -9,14 +9,14 @@
 //---------------------------------------------------------
 
 //---------------------------------------------------
-#ifndef LIST_G_IMPL_HPP
-#define LIST_G_IMPL_HPP
+#ifndef FORWARDLIST_IMPL_HPP
+#define FORWARDLIST_IMPL_HPP
 
 //---------------------------------------------------
 // friend
 //---------------------------------------------------
 template <typename T>
-std::ostream& operator<< (std::ostream& os, const List_G<T>& list) {
+std::ostream& operator<< (std::ostream& os, const ForwardList<T>& list) {
    os << "size    : " << list.size()   << std::endl;
    os << "content : [";
    const Cell<T>* ptrCell = list.head;
@@ -40,8 +40,8 @@ std::ostream& operator<< (std::ostream& os, const Cell<T>& cell) {
 // private
 //---------------------------------------------------
 template <typename T>
-Cell<T>* List_G<T>::createCell (const T& value,
-                                Cell<T>* next)  {
+Cell<T>* ForwardList<T>::createCell (const T& value,
+                                     Cell<T>* next)  {
    Cell<T>* ptrNewCell;
 
    // memory allocation
@@ -66,12 +66,12 @@ Cell<T>* List_G<T>::createCell (const T& value,
 
 //---------------------------------------------------
 template <typename T>
-List_G<T>::List_G ()
+ForwardList<T>::ForwardList ()
 :head(nullptr), nElement(0) {}
 
 //---------------------------------------------------
 template <typename T>
-void List_G<T>::push_front(const T& value) {
+void ForwardList<T>::push_front(const T& value) {
    Cell<T>* ptrNew = createCell(value, head);
    head            = ptrNew;
    nElement++;
@@ -79,7 +79,7 @@ void List_G<T>::push_front(const T& value) {
 
 //---------------------------------------------------
 template <typename T>
-void List_G<T>::pop_front() {
+void ForwardList<T>::pop_front() {
    if (empty())
       throw ListIsEmpty("List is empty");
    Cell<T>* tmp   = head;
@@ -91,20 +91,20 @@ void List_G<T>::pop_front() {
 
 //---------------------------------------------------
 template <typename T>
-void List_G<T>::clear() noexcept {
+void ForwardList<T>::clear() noexcept {
    while(not empty())
       pop_front();
 }
 
 //---------------------------------------------------
 template <typename T>
-List_G<T>::~List_G() {
+ForwardList<T>::~ForwardList() {
    clear();
 }
 
 //---------------------------------------------------
 template <typename T>
-T List_G<T>::front() const {
+T ForwardList<T>::front() const {
    if (nElement == 0)
       throw ListIsEmpty("List is empty");
     return head->data;
@@ -112,19 +112,19 @@ T List_G<T>::front() const {
 
 //---------------------------------------------------
 template <typename T>
-bool List_G<T>::empty() const noexcept {
+bool ForwardList<T>::empty() const noexcept {
     return nElement == 0;
 }
 
 //---------------------------------------------------
 template <typename T>
-size_t List_G<T>::size() const noexcept {
+size_t ForwardList<T>::size() const noexcept {
     return nElement;
 }
 
 //---------------------------------------------------
 template <typename T>
-T* List_G<T>::find(const T& value) const {
+T* ForwardList<T>::find(const T& value) const {
    Cell<T>* crt = head;
    while (crt and value != crt->data) {
       crt = crt->next;
@@ -135,7 +135,7 @@ T* List_G<T>::find(const T& value) const {
 //---------------------------------------------------
 template <typename T>
 template <typename Fonction>
-void List_G<T>::for_each(Fonction fonction) {
+void ForwardList<T>::for_each(Fonction fonction) {
    Cell<T>* crt = head;
    while (crt) {
       crt->data = fonction(crt->data);
@@ -143,4 +143,4 @@ void List_G<T>::for_each(Fonction fonction) {
    }
 }
 
-#endif /* List_G_IMPL_HPP */
+#endif /* FORWARDLIST_IMPL_HPP */

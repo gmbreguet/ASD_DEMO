@@ -10,7 +10,7 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "List_G.hpp"
+#include "ForwardList.hpp"
  
 using namespace std;
 
@@ -29,7 +29,7 @@ int main () {
    cout << "----------------------------------------" << endl;
    cout << "List_G<int> listInt"                      << endl;
    cout << "----------------------------------------" << endl;
-   List_G<int> listInt;
+   ForwardList<int> listInt;
    cout << listInt                                    << endl;
    cout << endl;
 
