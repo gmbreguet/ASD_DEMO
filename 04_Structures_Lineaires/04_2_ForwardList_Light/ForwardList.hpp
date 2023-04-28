@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Demo           : 04_2_List_G
-// Fichier        : List_G.hpp
+// Fichier        : ForwardList.hpp
 // Version        : 04 - 2023.04.26
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : forward list
@@ -8,8 +8,8 @@
 // Remarque(s)    : basic methods only
 //---------------------------------------------------------
 
-#ifndef LIST_G_HPP
-#define LIST_G_HPP
+#ifndef FORWARDLIST_HPP
+#define FORWARDLIST_HPP
 
 //-------------------------------------------------
 #include <iostream>
@@ -33,7 +33,7 @@ public:
 
 //---------------------------------------------------
 template <typename T>
-class List_G;
+class ForwardList;
 
 //---------------------------------------------------
 template <typename T>
@@ -45,7 +45,7 @@ struct Cell {
 //---------------------------------------------------
 // operator <<
 template <typename T>
-std::ostream& operator<< (std::ostream& os, const List_G<T>& list);
+std::ostream& operator<< (std::ostream& os, const ForwardList<T>& list);
 
 //---------------------------------------------------
 // operator <<
@@ -55,13 +55,13 @@ std::ostream& operator<< (std::ostream& os, const Cell<T>& cell);
 //---------------------------------------------------
 // class List
 template <typename T>
-class List_G {
-   friend std::ostream& operator<< <T>(std::ostream& os, const List_G<T>& list);
-   friend std::ostream& operator<< <T>(std::ostream& os, const Cell<T>&   cell);
+class ForwardList {
+   friend std::ostream& operator<< <T>(std::ostream& os, const ForwardList<T>& list);
+   friend std::ostream& operator<< <T>(std::ostream& os, const Cell<T>&        cell);
 
 public:
-   List_G();
-  ~List_G();
+   ForwardList();
+  ~ForwardList();
 
    void     push_front(const T& value);
    void     pop_front();
@@ -83,7 +83,7 @@ private:
    size_t      nElement;
 };
 
-#include "List_G_Impl.hpp"
+#include "ForwardList_Impl.hpp"
 
-#endif /* list_G_HPP */
+#endif /* FORWARDLIST_HPP */
 
