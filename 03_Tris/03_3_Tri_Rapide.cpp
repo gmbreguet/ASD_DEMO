@@ -57,6 +57,17 @@ int main() {
       cout << chaine << endl;
    }
 
+   {  // tableau de caractères
+      char chaine[] = "PARTITION";  // /!\ ajout '\0'
+      int TAILLE = sizeof(chaine) / sizeof(chaine[0]) - 1;
+
+      cout << endl;
+
+      cout << chaine << endl;
+      tri_rapide(chaine, TAILLE, true);
+      cout << chaine << endl;
+   }
+
    cout << endl;
    return EXIT_SUCCESS;
 }
