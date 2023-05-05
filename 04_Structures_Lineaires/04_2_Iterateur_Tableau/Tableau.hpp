@@ -152,8 +152,9 @@ const T& Tableau<T>::at(size_t i) const {
 //------------------------------------------------------
 template <typename T>
 void Tableau<T>::swap(Tableau<T>& other) {
-   std::swap(taille, other.taille);
-   std::swap(data,   other.data);
+   using std::swap;
+   swap(taille, other.taille);
+   swap(data,   other.data);
 }
 
 //---------------------------------------------------------
