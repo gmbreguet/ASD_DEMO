@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wconversion -Wall -Wextra -pedantic -std=c++20")
 
 add_executable(04_Structures_Lineaires
-        04_2_Iterateur_Tableau.cpp
+        04_4_xxx_Heap.cpp
         )
 
 #set_target_properties(
