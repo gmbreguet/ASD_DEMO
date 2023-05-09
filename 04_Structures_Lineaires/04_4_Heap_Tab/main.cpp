@@ -3,7 +3,7 @@
 // Fichier        : main.cpp
 // Version        : 01 - 2023.05.03
 // Auteur(s)      : BREGUET Guy-Michel
-// But            : algorithm::Heap
+// But            : algorithm::xxx_heap
 // Modifications  :
 // Remarque(s)    : NILL
 //---------------------------------------------------------
