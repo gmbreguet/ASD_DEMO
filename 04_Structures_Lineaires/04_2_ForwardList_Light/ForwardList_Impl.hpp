@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Demo           : 04_2_List_G
 // Fichier        : ForwardList_Impl.hpp
-// Version        : 04 - 2023.04.26
+// Version        : 05 - 2023.05.09
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : forward list
 // Modifications  :
@@ -104,14 +104,6 @@ ForwardList<T>::~ForwardList() {
 
 //---------------------------------------------------
 template <typename T>
-T ForwardList<T>::front() const {
-   if (nElement == 0)
-      throw ListIsEmpty("List is empty");
-    return head->data;
-}
-
-//---------------------------------------------------
-template <typename T>
 bool ForwardList<T>::empty() const noexcept {
     return nElement == 0;
 }
@@ -124,7 +116,33 @@ size_t ForwardList<T>::size() const noexcept {
 
 //---------------------------------------------------
 template <typename T>
-T* ForwardList<T>::find(const T& value) const {
+T& ForwardList<T>::front() {
+   if (nElement == 0)
+      throw ListIsEmpty("List is empty");
+   return head->data;
+}
+
+//---------------------------------------------------
+template <typename T>
+const T& ForwardList<T>::front() const {
+   if (nElement == 0)
+      throw ListIsEmpty("List is empty");
+   return head->data;
+}
+
+//---------------------------------------------------
+template <typename T>
+T* ForwardList<T>::find(const T& value) {
+   Cell<T>* crt = head;
+   while (crt and value != crt->data) {
+      crt = crt->next;
+   }
+   return &(crt->data);
+}
+
+//---------------------------------------------------
+template <typename T>
+const T* ForwardList<T>::find(const T& value) const {
    Cell<T>* crt = head;
    while (crt and value != crt->data) {
       crt = crt->next;

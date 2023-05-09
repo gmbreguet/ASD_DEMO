@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Demo           : 04_2_List_G
 // Fichier        : ForwardList.hpp
-// Version        : 04 - 2023.04.26
+// Version        : 05 - 2023.05.09
 // Auteur(s)      : BREGUET Guy-Michel
 // But            : forward list
 // Modifications  :
@@ -67,11 +67,14 @@ public:
    void     pop_front();
    void     clear()     noexcept;
 
-   T        front()     const;
    bool     empty()     const noexcept;
    size_t   size()      const noexcept;
 
-   T*       find(const T& value) const;
+         T& front();
+   const T& front()     const;
+
+         T* find(const T& value);
+   const T* find(const T& value) const;
 
    template<typename Fonction>
    void for_each(Fonction fonction);
