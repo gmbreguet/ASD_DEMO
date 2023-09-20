@@ -14,7 +14,6 @@
 
 using namespace std;
 
-
 //------------------------------------------------------
 template <typename T>
 ostream& operator<< (ostream& os, const vector<T>& v) {
